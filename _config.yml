@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 志双的博客
+title: The blog of zhishuang.rao
 subtitle: zhishuang
 description: 西南交通大学 | 软件工程 | 自然语言处理
 keywords: "SWJTU NLP DeepLearning  zhishuang  饶志双 zhishuangR 自然语言处理 深度学习"
@@ -122,7 +122,7 @@ deploy:
 
 
 live2d:
-  enable: false
+  enable: true
   scriptFrom: local
   pluginRootPath: live2dw/
   pluginJsPath: lib/
