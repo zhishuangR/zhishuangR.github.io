@@ -230,9 +230,9 @@ gitalk:
   owner: zhishuangR
   repo: zhishuangR.github.io
   oauth:
-    clientId:97cf3d51feabc6e3606d
-    clientSecret:2c02d1b8c3bddc4ccec2ba39518206c9eb58c29d
-  admin: godweiyang
+    clientId: 97cf3d51feabc6e3606d
+    clientSecret: 2c02d1b8c3bddc4ccec2ba39518206c9eb58c29d
+  admin: zhishuangR
 
 # the Gitment config，default disabled
 # Gitment 评论模块的配置，默认为不激活
