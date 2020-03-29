@@ -24,7 +24,7 @@
     <script src="<%- theme.jsDelivr.url %><%- theme.libs.js.clicklove %>" async="async"></script>
     <% } %>
     <% if (theme.busuanziStatistics && theme.busuanziStatistics.enable) { %>
-    <script async src="<%- theme.jsDelivr.url %><%- theme.libs.js.busuanzi %>"></script>
+    <script async src="<%-  %><%- theme.libs.js.busuanzi %>"></script>
     <% } %>
 
     <% if (theme.tidio.enable) { %>
@@ -82,17 +82,17 @@
     <script type="text/javascript" color="<%- theme.canvas_nest.color %>"
         pointColor="<%- theme.canvas_nest.pointColor %>" opacity='<%- theme.canvas_nest.opacity %>'
         zIndex="<%- theme.canvas_nest.zIndex %>" count="<%- theme.canvas_nest.count %>"
-        src="<%- theme.jsDelivr.url %><%- theme.libs.js.canvas_nest %>"></script>
+        src="<%-  %><%- theme.libs.js.canvas_nest %>"></script>
     <% } %>
 
     <% if (theme.ribbon.enable) { %>
     <% var ribbonSrc = theme.ribbon.clickChange ? theme.libs.js.ribbon : theme.libs.js.ribbonRefresh; %>
     <script type="text/javascript" size="<%- theme.ribbon.size %>" alpha='<%- theme.ribbon.alpha %>'
-        zIndex="<%- theme.ribbon.zIndex %>" src="<%- theme.jsDelivr.url %><%- ribbonSrc %>" async="async"></script>
+        zIndex="<%- theme.ribbon.zIndex %>" src="<%-  %><%- ribbonSrc %>" async="async"></script>
     <% } %>
 
     <% if (theme.ribbon_dynamic.enable) { %>
-    <script type="text/javascript" src="<%- theme.jsDelivr.url %><%- theme.libs.js.ribbon_dynamic %>" async="async"></script>
+    <script type="text/javascript" src="<%-  %><%- theme.libs.js.ribbon_dynamic %>" async="async"></script>
     <% } %>
     
     <% if (theme.instantpage.enable) { %>
