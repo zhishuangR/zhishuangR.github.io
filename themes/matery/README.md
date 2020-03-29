@@ -26,7 +26,7 @@
 - Integrated [Busuanzi Statistics](http://busuanzi.ibruce.info/), `Google Analytics` and post word count statistics.
 - Support music playback and video playback on the homepage
 - Support the `emoji` emoticon and use the `markdown emoji` grammar to directly generate the corresponding emoticon.
-- Support [DaoVoice](http://www.daovoice.io/)、[Tidio](https://www.tidio.com/) online chat.
+- Support [DaoVoice](http://www.daovoice.io/), [Tidio](https://www.tidio.com/) online chat.
 
 ## Contributor
 
@@ -54,9 +54,9 @@ git clone https://github.com/blinkfox/hexo-theme-matery.git
 Modify the value of `theme` in `_config.yml` of Hexo's root folder: `theme: hexo-theme-matery`.
 
 #### Suggestions for other changes to the `_config.yml`:
- 
+
 - Please modify the value of `url` of `_config.yml` to your website's main `URL` (eg `http://xxx.github.io`).
-- Recommended modify the value of the two 'per_page` to be a multiple of `6`, such as: `12`, `18`, etc. so that the posts list can be displayed well under each screen.
+- Recommended modify the value of the two `per_page` to be a multiple of `6`, such as: `12`, `18`, etc. so that the posts list can be displayed well under each screen.
 - If you are a Chinese user, it is recommended to change the value of `language` to `zh-CN`.
 
 ### new categories page
@@ -257,13 +257,13 @@ menu:
 
 ### Code highlight
 
-Hexo theme uses Hexo's plugin[hexo-prism-plugin](https://github.com/ele828/hexo-prism-plugin) to show the code highlight instead of its own theme.The Installation commands are as follows:
+Hexo theme uses Hexo's plugin [hexo-prism-plugin](https://github.com/ele828/hexo-prism-plugin) to show the code highlight instead of its own theme.The Installation commands are as follows:
 
 ```bash
 npm i -S hexo-prism-plugin
 ```
 
-Then,modify the value of `highlight.enable` to `false` in `_config.yml` file of Hexo root folder，and add the configuration of `prism` plugin as follows:
+Then,modify the value of `highlight.enable` to `false` in `_config.yml` file of Hexo root folder, and add the configuration of `prism` plugin as follows:
 
 ```yaml
 highlight:
@@ -278,7 +278,7 @@ prism_plugin:
 
 ### Search
 
-The theme uses the Hexo plugin[hexo-generator-search](https://github.com/wzpan/hexo-generator-search) to search the content,and the Installation commands are as follows:
+The theme uses the Hexo plugin [hexo-generator-search](https://github.com/wzpan/hexo-generator-search) to search the content,and the Installation commands are as follows:
 
 ```bash
 npm install hexo-generator-search --save
@@ -294,7 +294,7 @@ search:
 
 ### Translate Chinese Link to Pinyin (Recommend)
 
-Defualt permalinks of Hexo will include Chinese if your atrticle's title is Chinese.But it's adverse to `SEO`,and `gitment` comments don't suport Chinese Link as well.We can use the [hexo-permalink-pinyin](https://github.com/viko16/hexo-permalink-pinyin) of Hexo plugin to generate permalinks of Chinese Pinyin  when generating posts.
+Defualt permalinks of Hexo will include Chinese if your atrticle's title is Chinese. But it's adverse to `SEO`, and `gitment` comments don't suport Chinese Link as well. We can use the [hexo-permalink-pinyin](https://github.com/viko16/hexo-permalink-pinyin) of Hexo plugin to generate permalinks of Chinese Pinyin when generating posts.
 
 Installation commands are as follows：
 
@@ -302,7 +302,7 @@ Installation commands are as follows：
 npm i hexo-permalink-pinyin --save
 ```
 
-Add such configurations in `_config.yml` file of  Hexo:
+Add such configurations in `_config.yml` file of Hexo:
 
 ```yaml
 permalink_pinyin:
@@ -310,7 +310,7 @@ permalink_pinyin:
   separator: '-' # default: '-'
 ```
 
-> **Note*:[hexo-abbrlink](https://github.com/rozbo/hexo-abbrlink) can genarate non-Chinese link in addtion to this plugin.
+> **Note**: [hexo-abbrlink](https://github.com/rozbo/hexo-abbrlink) can genarate non-Chinese link in addtion to this plugin.
 
 ### Post word count statistics plugin (Recommend)
 
@@ -336,7 +336,7 @@ postInfo:
 
 ### Add emoji support (Optional)
 
-This theme adds support for the `emoji` emoticon, using the Hexo plugin for [hexo-filter-github-emojis] (https://npm.taobao.org/package/hexo-filter-github-emojis) to support The generation of the `emoji` expression, the corresponding `markdown emoji` syntax (`::`, for example: `:smile:`) is converted into a `emoji` expression that jumps. The installation command is as follows:
+This theme adds support for the `emoji` emoticon, using the Hexo plugin for [hexo-filter-github-emojis](https://npm.taobao.org/package/hexo-filter-github-emojis) to support the generation of the `emoji` expression, the corresponding `markdown emoji` syntax (`::`, for example: `:smile:`) is converted into a `emoji` expression that jumps. The installation command is as follows:
 
 ```bash
 npm install hexo-filter-github-emojis --save
@@ -353,11 +353,11 @@ githubEmojis:
   customEmojis:
 ```
 
-Execute `hexo clean && hexo g` to regenerate the blog file, and then  you can see the expression you wrote in the `emoji` grammar in the corresponding position in the article.
+Execute `hexo clean && hexo g` to regenerate the blog file, and then you can see the expression you wrote in the `emoji` grammar in the corresponding position in the article.
 
 ### Add RSS feed support (Optional)
 
-The theme uses the Hexo plugin[hexo-generator-feed](https://github.com/hexojs/hexo-generator-feed) to support `RSS` feed , and the Installation commands are as follows:
+The theme uses the Hexo plugin [hexo-generator-feed](https://github.com/hexojs/hexo-generator-feed) to support `RSS` feed , and the Installation commands are as follows:
 
 ```bash
 npm install hexo-generator-feed --save
@@ -403,7 +403,7 @@ In the theme `_config.yml` file, the configurations of `QQ`, `GitHub` and mailbo
 <% } %>
 ```
 
-You can search social icon such as `fab fa-github` in [Font Awesome](https://fontawesome.com/icons).There are common social icons you can reference:
+You can search social icon such as `fab fa-github` in [Font Awesome](https://fontawesome.com/icons). There are common social icons you can reference:
 
 - Facebook: `fab fa-facebook`
 - Twitter: `fab fa-twitter`
@@ -421,49 +421,37 @@ You can search social icon such as `fab fa-github` in [Font Awesome](https://fon
 
 ### Configure music player (optional)
 
-To support music playing, you must activate the file of music playing configuration and music data.
-
-First, create a new `musics.json` file in the `_data` directory (new if you don't have one) of your blog's `source` directory. The contents of the file are as follows:
-
-```json
-[{
-	"name": "五月雨变奏电音",
-	"artist": "AnimeVibe",
-	"url": "http://xxx.com/music1.mp3",
-	"cover": "http://xxx.com/music-cover1.png"
-}, {
-	"name": "Take me hand",
-	"artist": "DAISHI DANCE,Cecile Corbel",
-	"url": "/medias/music/music2.mp3",
-	"cover": "/medias/music/cover2.png"
-}, {
-	"name": "Shape of You",
-	"artist": "J.Fla",
-	"url": "http://xxx.com/music3.mp3",
-	"cover": "http://xxx.com/music-cover3.png"
-}]
-```
-
-> **Note**: The properties in the above JSON: `name`, `artist`, `url`, `cover` indicate the name of the music, the author, the music file address, and the music cover, respectively.
-
-Then, activate the configuration in the theme's `_config.yml` configuration file:
+To support music playing, you just need activate the `_config.yml` file of music playing configuration.
 
 ```yaml
-# Whether to display the musics.
+# Whether to display the musics
 music:
   enable: true
-  showTitle: false
-  title: Listen to music
-  fixed: false # enable fixed mode
-  autoplay: false # audio autoplay
+  title: 		   # non-fixed mode works
+    enable: true
+    show: Listen to music
+  server: netease   # require music platform: netease, tencent, kugou, xiami, baidu
+  type: playlist    # require song, playlist, album, search, artist
+  id: 503838841     # require song id / playlist id / album id / search keyword
+  fixed: false      # enable fixed mode
+  autoplay: false   # audio atuoplay
   theme: '#42b983'
-  loop: 'all' # player loop play, values: 'all', 'one', 'none'
-  order: 'list' # player play order, values: 'list', 'random'
-  preload: 'auto' # values: 'none', 'metadata', 'auto'
-  volume: 0.7 # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
-  listFolded: false # indicate whether list should folded at first
-  listMaxHeight: # list max height
+  loop: 'all'       # player loop play, values: 'all', 'one', 'none'
+  order: 'random'   # player play order, values: 'list', 'random'
+  preload: 'auto'   # values: 'none', 'metadata', 'auto'
+  volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
+  listFolded: true  # indicate whether list should folded at first
 ```
+
+>`server` values :  `netease` (NetEase  cloud music) , `tencent` (QQMusic) , `kugou` (KuGouMusic) , `xiami` 
+>
+>(XiamMusic) , `baidu` (BaiduMusic)
+>
+>`type` values : `song`  ,   `playlist` , `album` , `search` , `artist` 
+>
+>For example to get the `id`:open NetEase cloud music in the browser , click the playlist of my love , there will a string of 
+>
+>numbers ,  the `playlist`\`s `id` just is the number.
 
 ## Post Front-matter
 
