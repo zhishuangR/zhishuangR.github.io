@@ -66,7 +66,7 @@ cover:
 dream:
   enable: true
   showTitle: true
-  title: 交易终止
+  title: 内鬼已死，交易继续
   text: 我搬到谁的隔壁，谁成了我的邻居。鸣谢生命有你参与，笑纳我的邀请。
 
 # Whether to display the musics.
@@ -114,8 +114,8 @@ recommend:
 
 # Configure website favicon and LOGO
 # 配置网站favicon和网站LOGO
-favicon: https://cdn.jsdelivr.net/gh/zhishuangR/myImg/md/logo.png
-logo: https://cdn.jsdelivr.net/gh/zhishuangR/myImg/md/logo(已去底).png
+favicon: https://cdn.jsdelivr.net/gh/zhishuangR/myImg@master/md/logo.png
+logo: https://cdn.jsdelivr.net/gh/zhishuangR/myImg@master/md/logo(已去底).png
 
 # The configuration of the second button in the home banner,
 # including the display name of the button, the font awesome icon, and the hyperlink to the button.
@@ -201,7 +201,7 @@ clicklove:
 # profile in about page, including avatars, career, and personal introductions.
 # 在”关于”页面中配置个人信息，包括头像、职业和个人介绍.
 profile:
-  avatar: https://cdn.jsdelivr.net/gh/zhishuangR/myImg/md/avatar.png
+  avatar: https://cdn.jsdelivr.net/gh/zhishuangR/myImg@master/md/avatar.png
   career: 西南交通大学 | 软件工程 | NLP
   introduction: 我是西南交通大学2019级硕士研究生,研究方向是深度学习与自然语言处理。我们实验室是云计算智能技术，欢迎大家报考！
 

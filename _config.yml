@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: The blog of zhishuang.rao
+title: zhishuang
 subtitle: zhishuang
 description: 西南交通大学 | 软件工程 | 自然语言处理
-keywords: "SWJTU NLP DeepLearning  zhishuang  饶志双 zhishuangR 自然语言处理 深度学习"
-author: 饶志双
+keywords: "SWJTU NLP DeepLearning  zhishuang  饶志双 zhishuangR 自然语言处理 深度学习 zhishuang.rao"
+author: zhishuang.rao
 language: zh-CN
 timezone:
 
