@@ -13,6 +13,9 @@ menu:
   Archives:
     url: /archives
     icon: fas fa-archive
+  # Shuoshuo:
+  #   url: /shuoshuo
+  #   icon: fas fas fa-book
   About:
     url: /about
     icon: fas fa-user-circle
