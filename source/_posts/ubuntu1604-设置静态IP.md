@@ -7,10 +7,13 @@ mathjax: false
 date: 2020-04-30 15:29:44
 password:
 summary:
-tags:
-categories:
+categories: Linux
 img:
-keywords:
+keywords: IP 静态IP Ubuntu
+tags:
+	- IP
+	- 静态IP
+	- Ubuntu
 ---
 
 1. 首先确保是NAT连接模式

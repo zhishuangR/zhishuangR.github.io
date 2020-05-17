@@ -1,8 +1,17 @@
 ---
-layout: w
-title: Todo List
-date: 2020-04-30 10:10:42
-tags:
+title: Todo-List
+top: false
+cover: false
+toc: true
+mathjax: false
+date: 2020-04-30 14:46:32
+password:
+summary:
+categories: 待完成
+img:
+keywords: todo list
+tags: 
+	- todo list
 ---
 
 * 前馈网络架构梳理

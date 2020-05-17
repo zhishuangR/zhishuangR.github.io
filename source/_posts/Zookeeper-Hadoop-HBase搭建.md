@@ -1,3 +1,4 @@
+---
 title: Zookeeper+Hadoop+HBase搭建
 top: false
 cover: false
@@ -6,14 +7,19 @@ mathjax: false
 date: 2020-05-07 21:54:26
 password:
 summary:
-tags:
-categories:
+categories: 大数据
 img:
-keywords:
+keywords: hadoop zookeeper hbase 大数据
+tags:
+	- hadoop
+	- zookeeper
+	- hbase
+	- 大数据
+---
 
-[Hadoop搭建]()
+[Hadoop搭建](https://zhishuang.tk/2020/04/30/ubuntu1604-da-jian-hadoop-ji-qun/)
 
-[Zookeeper+Hadoopda搭建（Hadoop HA）]()
+[Zookeeper+Hadoopda搭建（Hadoop HA）](https://zhishuang.tk/2020/05/06/hadoop-ha-da-jian/)
 
 这儿实现在Hadoop HA的基础上搭建Hbase
 

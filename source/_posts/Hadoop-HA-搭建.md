@@ -6,11 +6,15 @@ toc: true
 mathjax: false
 date: 2020-05-06 20:30:35
 password:
-summary:
-tags:
-categories:
+summary: 
+categories: 大数据
 img:
-keywords:
+keywords: 高可用 HA hadoop 大数据
+tags:
+	- 高可用
+	- HA
+	- hadoop
+	- 大数据
 ---
 
 所谓HA（High Available）是Hadoop2.0中引入来解决Hadoop1.0中单点故障问题的一种机制。HA严格来说应该分成各个组件的HA机制：HDFS的HA和YARN的HA。

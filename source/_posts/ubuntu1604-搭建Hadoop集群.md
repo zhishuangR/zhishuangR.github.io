@@ -7,10 +7,12 @@ mathjax: false
 date: 2020-04-30 16:28:34
 password:
 summary:
-tags:
-categories:
+categories: 大数据
 img:
-keywords:
+keywords: hadoop 集群
+tags:
+	- hadoop
+	- 集群
 ---
 
 ## 系统环境
@@ -29,7 +31,7 @@ keywords:
 
 ### 设置静态IP
 
-[ubuntu1604 设置静态IP]()
+[ubuntu1604 设置静态IP](https://zhishuang.tk/2020/04/30/ubuntu1604-she-zhi-jing-tai-ip/)
 
 ### 修改hostname
 

@@ -7,10 +7,12 @@ mathjax: false
 date: 2020-05-09 14:46:32
 password:
 summary:
-tags:
-categories:
+categories: 大数据
 img:
-keywords:
+keywords: hbase 大数据
+tags: 
+	- hbsse 
+	- 大数据
 ---
 
 * 创建表：
