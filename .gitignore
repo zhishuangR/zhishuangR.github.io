@@ -4,5 +4,5 @@ Thumbs.db
 public/
 .deploy*/
 .vscode/
-node_modules
+node_modules/
 

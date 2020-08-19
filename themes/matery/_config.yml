@@ -58,9 +58,9 @@ time:
 cover:
   showPrevNext: true # 是否显示左右切换按钮. Whether to display the left and right toggle buttons.
   showIndicators: true # 是否显示指示器. # Whether to display the indicators
-  autoLoop: true # 是否自动轮播. Whether it is automatically rotated.
+  autoLoop: false # 是否自动轮播. Whether it is automatically rotated.
   duration: 120 # 切换延迟时间. Switching delay time.
-  intervalTime: 5000 # 自动切换下一张的间隔时间. Automatically switch the interval of the next one.
+  intervalTime: 7000 # 自动切换下一张的间隔时间. Automatically switch the interval of the next one.
   useConfig: false # 是否使用配置文件, 在 _data/covers.json 下配置推荐文章, false则使用主题在文章中的配置 cover coverImg
   # useConfig 使用方式: 将主题 hexo-theme-matery/source/_data/covers.json 移动到 my-blog/source/_data/下修改配置即可
 
@@ -69,9 +69,8 @@ cover:
 dream:
   enable: true
   showTitle: true
-  title: 内鬼已死，交易继续
-  text: 我搬到谁的隔壁，谁成了我的邻居。鸣谢生命有你参与，笑纳我的邀请。
-
+  title: 林深时见你，梦醒时见你
+  text: 谈谈情，说说爱，亲一亲，抱一抱，嘿嘿嘿
 # Whether to display the musics.
 # 是否在首页显示音乐.
 music:
@@ -514,9 +513,9 @@ subtitle:
   showCursor: true # 是否显示光标
   startDelay: 300 # 开始延迟
   typeSpeed: 100 # 打字速度
-  backSpeed: 50 # 删除速度
-  sub1: 从来没有真正的绝境, 只有心灵的迷途
-  sub2: Never really desperate, only the lost of the soul
+  backSpeed: 120 # 删除速度
+  sub1: 要一直一直在一起，一直一直宠着小可爱
+  sub2: I LOVE YOU HUI HUI
 
 # 手机二级菜单.
 navMenu:

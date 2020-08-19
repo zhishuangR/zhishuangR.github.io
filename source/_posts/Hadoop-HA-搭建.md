@@ -40,7 +40,7 @@ tags:
 
 解压zookeeper，并重命名为zookeeper
 
-```
+```bash
 tar -zxvf apache-zookeeper-3.5.7-bin.tar.gz -C /usr/local/
 cd /usr/local
 mv apache-zookeeper-3.5.7-bin/ zookeeper
@@ -50,21 +50,21 @@ mv apache-zookeeper-3.5.7-bin/ zookeeper
 
 * 在`/usr/local/zookeeper/`这个目录下创建zkData
 
-```
+```bash
 cd /usr/local/zookeeper
 mkdir zkData
 ```
 
 * 重命名`/usr/local/zookeeper/conf`这个目录下的zoo_sample.cfg为zoo.cfg
 
-```
+```bash
 cd /usr/local/zookeeper/conf
 mv zoo_sample.cfg zoo.cfg
 ```
 
 * 执行`sudo gedit zoo.cfg`打开配置文件，配置如下：
 
-```
+```bash
 # 修改原有dataDir值如下
 dataDir=/usr/local/zookeeper/zkData
 #######################cluster##########################
@@ -87,7 +87,7 @@ D是万一集群中的Leader服务器挂了，需要一个端口来重新进行�
 
 * 在/usr/local/zookeeper/zkData目录下创建并打开文件myid
 
-```
+```bash
 gedit myid
 ```
 
@@ -95,7 +95,7 @@ gedit myid
 
 * 拷贝配置好的zookeeper到其他机器上,并分别修改myid文件中内容为2、3
 
-```
+```bash
 scp -r /usr/local/zookeeper/ slave1:/usr/local/
 scp -r /usr/local/zookeeper/ slave2:/usr/local/
 ```
@@ -104,7 +104,7 @@ scp -r /usr/local/zookeeper/ slave2:/usr/local/
 
 执行`sudo gedit /etc/profile`打开配置文件，加入下列内容
 
-```
+```bash
 export ZOOKEEPER_HOME=/usr/local/zookeeper
 export PATH=$ZOOKEEPER_HOME/bin:$PATH
 ```
@@ -113,7 +113,7 @@ export PATH=$ZOOKEEPER_HOME/bin:$PATH
 
 * 拷贝`/etc/profile`文件到其他机器
 
-```
+```bash
 scp /etc/profile slave1:/etc
 ```
 
@@ -127,7 +127,7 @@ scp /etc/profile slave1:/etc
 
 * 配置core-site.xml：
 
-```
+```xml
 <configuration>
 	<!-- 把两个NameNode的地址组装成一个集群mycluster -->
 	<property>
@@ -155,7 +155,7 @@ scp /etc/profile slave1:/etc
 
 * 配置hdfs-site.xml
 
-```
+```xml
 <configuration>
 	<!-- 冗余度 -->
 	<property>
@@ -250,7 +250,7 @@ scp /etc/profile slave1:/etc
 
 * 配置mapred-site.xml
 
-```
+```xml
 <configuration>
    <property>
        <name>mapreduce.framework.name</name>
@@ -261,7 +261,7 @@ scp /etc/profile slave1:/etc
 
 配置yarn-site.xml
 
-```
+```xml
 <configuration>
     <property>
         <name>yarn.nodemanager.aux-services</name>
@@ -318,7 +318,7 @@ scp /etc/profile slave1:/etc
 
 * 拷贝配置好的Hadoop文件到其他机器上
 
-```
+```bash
 scp -r /usr/local/hadoop/etc/hadoop/ slave1:/usr/local/hadoop/etc/
 scp -r /usr/local/hadoop/etc/hadoop/ slave2:/usr/local/hadoop/etc/
 ```

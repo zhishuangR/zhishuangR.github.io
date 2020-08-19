@@ -27,7 +27,7 @@ tags:
 
 将安装文件`hbase-2.2.4-bin.tar.gz`到`/usr/local`并重命名为`hbase`
 
-```
+```bash
 tar -zxvf hbase-2.2.4-bin.tar.gz -C /usr/local
 cd /usr/local
 mv -r hbase-2.2.4 hbase
@@ -37,7 +37,7 @@ mv -r hbase-2.2.4 hbase
 
 **环境变量**，执行`sudo gedit /etc/profile`打开配置文件，添加如下内容
 
-```
+```bash
 #set hbase env
 export HBASE_HOME=/usr/local/hbase
 export PATH=$HBASE_HOME/bin:$PATH
@@ -47,7 +47,7 @@ export PATH=$HBASE_HOME/bin:$PATH
 
 **hbase-env.sh**
 
-```
+```bash
 export JAVA_HOME=/usr/java/jdk1.8.0_251
 export HADOOP_HOME=/usr/local/hadoop
 export HBASE_HOME=/usr/local/hbase
@@ -57,7 +57,7 @@ export HBASE_MANAGES_ZK=false
 
 **hbase-site.xml**
 
-```
+```xml
 <configuration>
 	<!-- hadoop集群名称 -->
     <property>
@@ -97,7 +97,7 @@ export HBASE_MANAGES_ZK=false
 
 **regionservers**
 
-```
+```bash
 master
 slave1
 slave2
@@ -111,7 +111,7 @@ slave2
 
 **分发hbase给其他主机**
 
-```
+```bash
 scp -r /usr/local/hbase/ slave1:/usr/local/
 scp -r /usr/local/hbase/ slave1:/usr/local/
 ```
@@ -124,7 +124,7 @@ scp -r /usr/local/hbase/ slave1:/usr/local/
 
 * master端配置
 
-```
+```bash
 # /etc/ntp.conf, configuration for ntpd; see ntp.conf(5) for help
 # 时间差异文件
 driftfile /var/lib/ntp/ntp.drift
@@ -181,7 +181,7 @@ restrict 192.168.79.0 mask 255.255.255.0 nomodify
 
 * slave端配置
 
-```
+```bash
 # /etc/ntp.conf, configuration for ntpd; see ntp.conf(5) for help
 # 时间差异文件
 driftfile /var/lib/ntp/ntp.drift
@@ -272,7 +272,7 @@ restrict source notrap nomodify noquery
 
 ## 群起脚本
 
-```
+```bash
 #!/bin/bash
 if [ $# -lt 1 ]
  then 

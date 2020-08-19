@@ -45,7 +45,7 @@ tags:
 
 执行命令`sudo gedit /etc/hosts`,添加映射关系，注意IP地址换成自己的
 
-```
+```bash
 192.168.79.129	master
 ```
 
@@ -61,7 +61,7 @@ tags:
 
 安装openssh-server( 通常Linux系统会默认安装openssh的客户端软件openssh-client)，所以需要自己安装一下服务端。
 
-```
+```bash
 sudo apt-get install openssh-server
 ```
 
@@ -77,7 +77,7 @@ sudo apt-get install openssh-server
 
 ### 创建文件夹
 
-```bash
+```shell
 sudo mkdir /usr/java
 ```
 
@@ -99,7 +99,7 @@ sudo tar -zxvf ~/Downloads/jdk-8u251-linux-x64.tar.gz -C /usr/java
 
 执行`sudo gedit /etc/profile`命令打开配置文件，在末尾添加以下几行文字，注意自己的jdk版本号。
 
-```
+```bash
 #set java env
 export JAVA_HOME=/usr/java/jdk1.8.0_251
 export JRE_HOME=${JAVA_HOME}/jre    
@@ -119,13 +119,13 @@ export PATH=${JAVA_HOME}/bin:$PATH
 
 将我们下载的Hadoop解压到 /usr/local/ 中
 
-```
+```bash
 sudo tar -zxvf ~/Downloads/hadoop-3.1.3.tar.gz -C /usr/local
 ```
 
 利用`cd /usr/local/`命令切换操作空间，将文件夹名改为hadoop
 
-```
+```bash
 sudo mv ./hadoop-3.1.3/ ./hadoop
 ```
 
@@ -135,7 +135,7 @@ sudo mv ./hadoop-3.1.3/ ./hadoop
 
 执行`sudo gedit /etc/profile`命令打开配置文件,添加下面的语句
 
-```
+```bash
 #set Hadoop env
 HADOOP_HOME=/usr/local/hadoop
 export PATH=${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin:$PATH
@@ -177,7 +177,7 @@ export PATH=${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin:$PATH
 
 在 `/usr/local/hadoop/etc/hadoop/`目录下，执行命令`sudo gedit core-site.xml`，修改配置文件core-site.xml，内容如下：
 
-```
+```xml
 <configuration> 
  <property>
       <name>hadoop.tmp.dir</name> 
@@ -196,7 +196,7 @@ export PATH=${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin:$PATH
 
 在 `/usr/local/hadoop/etc/hadoop/`目录下，执行命令`sudo gedit hdfs-site.xml`，修改配置文件hdfs-site.xml，内容如下：
 
-```
+```xml
 <configuration> 
    <property>
        <name>dfs.replication</name>
@@ -250,7 +250,7 @@ export PATH=${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin:$PATH
 
 执行`sudo gedit /etc/hosts`配置主机映射，添加下列语句：
 
-```
+```bash
 #192.168.79.129	master#这条已经存在，不用添加
 192.168.79.130	slave1
 192.168.79.131	slave2
@@ -262,7 +262,7 @@ export PATH=${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin:$PATH
 
 执行`sudo gedit /etc/hosts`配置主机映射，添加下列语句
 
-```
+```bash
 192.168.79.130	slave1
 192.168.79.131	slave2
 ```
@@ -271,7 +271,7 @@ export PATH=${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin:$PATH
 
 免密配置需要保证三台主机之间都能互相免密登录，**三台主机**都需要**执行**下面的命令
 
-```
+```bash
 ssh-keygen -t rsa    //前面配置过则不需要
 ssh-copy-id master    //将公钥文件发送给包括自身在内的3台服务器
 ssh-copy-id slave1
@@ -290,7 +290,7 @@ ssh slave2
 
 执行`sudo gedit core-site.xml`打开配置文件，配置如下：
 
-```
+```xml
 <configuration> 
  <property>
       <name>hadoop.tmp.dir</name> 
@@ -307,7 +307,7 @@ ssh slave2
 
 执行`sudo gedit hdfs-site.xml`打开配置文件，配置如下：
 
-```
+```xml
 <configuration> 
    <!-- 指定冗余度 -->
    <property>
@@ -334,7 +334,7 @@ ssh slave2
 
 执行`sudo gedit yarn-site.xml`打开配置文件，配置如下：
 
-```
+```xml
 <configuration>
    <!--指定mapreduce走shuffle -->
    <property>
@@ -351,7 +351,7 @@ ssh slave2
 
 执行`sudo gedit mapred-site.xml`打开配置文件，配置如下：
 
-```
+```xml
 <configuration>
 <!-- 指定mapreduce运行在yarn上 -->
 <property>
@@ -363,7 +363,7 @@ ssh slave2
 
 执行`sudo gedit workers`打开配置文件，配置如下：
 
-```
+```bash
 master
 slave1
 slave2
@@ -371,7 +371,7 @@ slave2
 
 将配置好的文件分发给slave1和slave2
 
-```
+```bash
 scp -r /usr/local/hadoop/etc/hadoop/ slave1:/usr/local/hadoop/etc/
 scp -r /usr/local/hadoop/etc/hadoop/ slave2:/usr/local/hadoop/etc/
 ```
@@ -407,7 +407,7 @@ scp -r /usr/local/hadoop/etc/hadoop/ slave2:/usr/local/hadoop/etc/
 
 为了方便启动集群和关闭集群，编写一个脚本，在master机器上执行`mkdir bin`命令在用户目录下创建`bin`目录，执行`gedit mycluster`命令创建并打开文件`mycluster`,在文件中添加下面的内容：
 
-```
+```bash
 #!/bin/bash
 if [ $# -lt 1 ]
  then 
@@ -435,7 +435,7 @@ esac
 
 在`bin`目录下执行`gedit myjps`命令创建并打开文件`myjps`,在文件中添加下面的内容：
 
-```
+```bash
 #!/bin/bash
 for i in master slave1 slave2
 do
@@ -454,13 +454,13 @@ done
 
 打开~/.bashrc 文件
 
-```
+```bash
 sudo gedit ~/.bashrc
 ```
 
 加入下列语句
 
-```
+```bash
 source /etc/profile
 ```
 
