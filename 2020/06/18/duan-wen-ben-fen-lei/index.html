@@ -1,0 +1,1321 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="短文本 分类 综述">
+    <meta name="description" content="西南交通大学 | 软件工程 | 自然语言处理">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162104665-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-162104665-1');
+</script>
+
+
+    <title>短文本分类 | zhishuang</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/zhishuangR/myImg@master/md/logo.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="zhishuang" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/zhishuangR/myImg@master/md/logo(已去底).png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">zhishuang</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/zhishuangR/myImg@master/md/logo(已去底).png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">zhishuang</div>
+        <div class="logo-desc">
+            
+            西南交通大学 | 软件工程 | 自然语言处理
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/zhishuangR" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/zhishuangR" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/zhishuangR/myImg/md/8.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">短文本分类</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%BB%BC%E8%BF%B0/">
+                                <span class="chip bg-color">综述</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%9F%AD%E6%96%87%E6%9C%AC/">
+                                <span class="chip bg-color">短文本</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%88%86%E7%B1%BB/">
+                                <span class="chip bg-color">分类</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%9F%AD%E6%96%87%E6%9C%AC/" class="post-category">
+                                短文本
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-06-18
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-08-20
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.9k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    18 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h3 id="大纲目录"><a href="#大纲目录" class="headerlink" title="大纲目录"></a>大纲目录</h3><ul>
+<li>短文本分类的难点和挑战<ul>
+<li>和长文本相比，有什么不同，特殊在哪里，长文本的分类方法为什么不能适用于短文本分类</li>
+</ul>
+</li>
+<li>短文本分类包含哪些应用领域<ul>
+<li>评论数据等的情感分析</li>
+<li>聊天记录分析</li>
+<li>问答系统</li>
+<li>搜索</li>
+<li>其他</li>
+</ul>
+</li>
+<li>短文本分类方法划分<ul>
+<li>按照流程划分<ul>
+<li>短文本分类流程是怎样的，与长文本分类流程有什么不同</li>
+<li>特征抽取文本表示分类</li>
+</ul>
+</li>
+<li>标准划分<ul>
+<li>基于机器学习</li>
+<li>基于深度学习</li>
+<li>融合</li>
+</ul>
+</li>
+<li>是否引入外部知识源<ul>
+<li>无外部知识源</li>
+<li>有外部知识源</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>相关数据集整理，给出评价指标</li>
+<li>各个数据集上实验结果对比分析</li>
+<li>总结，分析未来发展趋势</li>
+</ul>
+<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>短文本分类是自然语言处理领域的重要任务，包括情感分析、问答、对话管理等。随着Internet的大规模普及和用户数量的进一步增加,互联网上的各种短文本正在爆炸式地增长。短文本是相对于长文本而言的，通常指书评、影评、聊天记录、产品介绍等短文本，这些文本中包含了大量有价值的隐含信息，但现有的研究大多集中在长文本上，且长文本的分类算法无法直接应用于短文本分类^[1]^,这是因为短文本通常不遵循语法规则,并且长度短、没有足够的信息量来进行统计推断,机器很难在有限的语境中进行准确的推断.此外,由于短文本常常不遵循语法,自然语言处理技术(如词性标注和句法解析等)难以直接应用于短文本分析^[2]^.</p>
+<p>本文根据所需知识源的属性,将短文本理解模型分为3类:</p>
+<ul>
+<li>隐性(implicit)语义模型</li>
+<li>半显性(semi-explicit)语义模型</li>
+<li>显性(explicit)语义模型</li>
+</ul>
+<p>其中,隐形和半显性模型试图从大量文本数据中挖掘出词与词之间的联系,从而应用于短文本分类.相比之下,显性模型使用人工构建的大规模知识库和词典辅助短文本分类.</p>
+<p>从另一个角度而言,短文本理解模型在文本分析上的粒度也有差异.部分方法直接模拟短文本的表示方式,因此本文将其归为“文本”粒度.其余大多方法则以词为基础.这些方法首先推出每个词的表示,然后使用额外的合成方式推出短文本的表示.本文将这些方法归为“词”粒度</p>
+<h3 id="文本分类方法"><a href="#文本分类方法" class="headerlink" title="文本分类方法"></a>文本分类方法</h3><h4 id="隐性-implicit-语义模型"><a href="#隐性-implicit-语义模型" class="headerlink" title="隐性(implicit)语义模型"></a>隐性(implicit)语义模型</h4><p>隐性语义模型产生的短文本通常表示为映射在一个语义空间上的隐性向量.这个向量的每个维度所代表的含义人们无法解释,只能用于机器计算.以下将介绍4种代表性的隐性语义模型.</p>
+<ul>
+<li>LSA(latent semantic analysis)^[3]^</li>
+</ul>
+<p>LSA旨在用统计方法分析大量文本,从而推出词与文本的含义表示.其思想核心是在相同语境下出现的词具有较高的语义相关性.具体而言,LSA构建一个庞大的词与文本的共现矩阵.对于每个词向量,它的每个维度都代表一个文本;对于每个文本向量,其每个维度代表一个词.通常,矩阵每项的输入是经过平滑或转化的共现次数.常用的转化方法为TF-IDF.最终,LSA通过奇异值分解(SVD)的方法将原始矩阵降维.在短文本的情境下,LSA有2种使用方式:首先,在语料足够多的离线任务上，LSA可以直接构建一个词与短文本的共现矩阵,从而推出每个短文本的表示;其次,在训练数据较小的情境下,或针对线上任务(针对测试数据),可以事先通过标准的LSA方法得到每个词向量,然后使用额外的语义合成方式获取短文本向量.</p>
+<ul>
+<li>超空间模拟语言模型^[4]^</li>
+</ul>
+<p>超空间模拟语言模型(hyperspace analogue to language model, HAL)与LSA的主要区别在于前者是更加纯粹的“词模型”.HAL旨在构建一个词与词的共现矩阵.对于每个词向量,它的每个维度代表一个“语境词”. 模型统计目标词汇与语境词汇的共现次数,并经过相应的平滑或转换(如TF-IDF, pointwise mutual information等)得到矩阵中每个输入的值.通常,语境词的选取有较大的灵活性.例如,语境词可被选为整个词汇,或者除停止<br>词外的高频词[5].类比LSA,在HAL中可以根据原始向量的维度和任务要求选择是否对原始向量进行降维.由于HAL的产出仅仅为词向量,在短文本理解这一任务中需采用额外的合成方式(如向量相加)来推出短文本向量.</p>
+<ul>
+<li>神经网络语言模型</li>
+</ul>
+<p>近年来，随着神经网络和特征学习的发展,传统的HAL逐渐被神经网络语言模型(neural language model, NLM)^[6-8]^取代.与HAL通过明确共现统计构建词向量的思想不<br>同,NLM旨在将词向量当成待学习的模型参数,并通过神经网络在大规模非结构化文本中训练来更新这些参数以得到最优的词语义编码(常被称作word embedding).</p>
+<p>最早的概率性NLM由Bengio等人提出^[6]^,其模型使用前向神经网络(feedforward neural network)根据语境预测下一个词出现的概率.通过对训练文本中每个词的极大似然估计,模型参数(包括词向量和神经网络参数)可使用误差反向传播算法(BP)进行更新.此模型的一个缺点在于仅仅使用了有限的语境.后来,Mikolov等人^[7]^提出使用递归神经网络(recurrent neural network) 来代替前向神经网络，从而模拟较长的语境.此外,原始NLM的计算复杂度很高,这主要是由于网络中大量参数和非线性转换所致.针对这一问题,Mikolov等人^[8]^提出2种简化(去掉神经网络权重和非线性转换)的NLM,即continuous bag of words(CBOW)和Skip-gram.前者通过窗口语境预测目标词出现的概率,而后者使<br>用目标词预测窗口中的每个语境词出现的概率.</p>
+<p>总而言之,NLM同HAL相似，所得到的词向量并不能直接用于短文本理解,而需要额外的合成模型依据词向量得到短文本向量.</p>
+<ul>
+<li>段向量</li>
+</ul>
+<p>段向量(paragraph vector, PV)^[10]^是另一种基于神经网络的隐性短文本理解模型. PV可被视作文献^[8]^中CBOW和Skip-gram的延伸，可直接应用于短文本向量的学习.PV的核心思想是将短文本向量当作“语境”,用于辅助推理(例如根据当前词预测语境词).在极大似然的估计过程中，文本向量亦被作为模型参数更新. PV的产出是词向量和文本向量.对于(线上任务中的)测试短文本，PV需要使用额外的推理获取其向量.图3比较了CBOW、Skip-gram和2种PV的异同.</p>
+<p><img src="/home/zhishuang/Pictures/QQ%25E5%259B%25BE%25E7%2589%258720200630104534.png" alt="QQ图片20200630104534"></p>
+<h4 id="半显性-semi-xpIicit-语义模型"><a href="#半显性-semi-xpIicit-语义模型" class="headerlink" title="半显性(semi-xpIicit)语义模型"></a>半显性(semi-xpIicit)语义模型</h4><p>半显性语义模型产生的短文本表示方法,也是一种映射在语义空间里的向量.与隐性语义模型不同的是,半显性语义模型的向量的每一个维度是一个“主题(topic)”.这个主题通常是一组词的聚类.人们可以通过这个主题猜测这个维度所代表的含义;但是这个维度的语义仍然不是明确的、可解释的.半显性语义模型的代表性工作是主题模型(topic<br>models).</p>
+<p>LSA尝试通过线性代数(奇异值分解)的处理方式发现文本中的隐藏语义结构,从而得到词和文本的特征表示;而主题模型则尝试从概率生成模型(generative model)的角度分析文本语义结构,模拟“主题”这一隐藏参数,从而解释词与文本的共现关系.最早的主题模型PLSA( probabilistic LSA)为LSA的延伸，由Hofmann提出^[11]^PLSA假设文本具有主题分布,而文本中的词从主题对应的词分布中抽取.以d表示文本,w表示词,z表示主题(隐藏<br>参数),文本和词的联系概率$p(d,w)$的生成过程可被表示为:</p>
+<p>$p(d, w)=p(d) \sum_{x \in Z} p(w \mid z) p(z \mid d)$</p>
+<p>虽然PLSA可以模拟每个文本的主题分布,然而其没有假设主题的先验分布(每个训练文本的主题分布相对独立),它的参数随训练文本的个数呈线性增长，且无法应用于测试文本.一个更加完善的主题模型为LDA ( latent dirichlet allocation)^[12]^. LDA从贝叶斯的角度为2个多项式分布添加了狄利克雷先验分布,从而解决了PLSA 中存在的问题.在LDA中,每个文本的主题分布为多项式分布$Mult (θ)$,其中$θ$从狄利克雷先验$Dir(α)$抽取.同理,对于主题的词分布$Mult(φ)$,其参数$φ$从狄利克雷先验$Dir(β)$获取.图4对比了PLSA和LDA的盘子表示法(plate notation).</p>
+<p><img src="/home/zhishuang/Pictures/QQ%E6%88%AA%E5%9B%BE20200701115340.png" alt="QQ截图20200701115340"></p>
+<p>总之,通过采用主题模型对短文本进行训练,最终可以获取每个短文本的主题分布，以作为其表示方式.这种表示方法将短文本转为了机器可以用于计算的向量.</p>
+<h4 id="显性-explicit-语义模型"><a href="#显性-explicit-语义模型" class="headerlink" title="显性(explicit)语义模型"></a>显性(explicit)语义模型</h4><p>近年来，随着大规模知识库系统的出现(如Wikipedia ,Freebase,Probase等),越来越多的研究关注于如何将短文本转化成人和机器都可以理解的表示方法.这类模型称之为显性语义模型.与前2类模型相比,显性语义模型最大的特点就是它所产生的短文本向量表示不仅是可用于机器计算的,也是人类可以理解的,每一个维度都有明确的含义,通常<br>是一个明确的“概念(concept)”.这意味着机器将短文本转为显性语义向量后,人们很容易就可以判断这个向量的质量,发现其中的问题，从而方便进一步的模型调整与优化.</p>
+<p>1)显性语义分析模型.在基于隐性语义的模型中,向量的每个维度并没有明确的含义标注.与之相对的是显性语义模型,向量空间的构建由知识库辅助完成.显性语义分析模型(explicit semantic analysis,ESA)^[13]^同LSA的构建思路一致, 旨在构建一个庞大的词与文本的共现矩阵.在这个矩阵中，每个输入为词与文本的TF-IDF.然而,在ESA中词向量的每<br>个维度代表一个明确的知识库文本,例如Wikipedia文章(或标题).此外,原始的ESA模型没有对共现矩阵进行降维处理，因而产生的词向量具有较高维度.在短文本理解这一任务中,需使用额外的语义合成方法推导出短文本向量.图5比较了LSA,HAL,ESA和LDA在本质上的区别与联系.</p>
+<p><img src="/home/zhishuang/Pictures/QQ%E6%88%AA%E5%9B%BE20200702142120.png" alt="QQ截图20200702142120"></p>
+<p>2)概念化,另一类基于显性语义的短文本理解方法为概念(conceptualization).概念化旨在借助知识库推出短文本中每个词的概念分布，即将词按语境映射到一个以概念为维度的向量上。在这一任务中,每个词的候选概念可从知识库中明确获取.例如，通过知识库Probase^[16]^，机器可获悉apple这个词有“水果”和“公司”这2个概念当apple出现在“apple ipad”这个短文本中,通过概念化可分析得出apple有较高的概率属于“公司”这个概念.最早的概念化方法由Song等人提出^[9]^。其模型使用知识库Probase,获取短文本中每个词与概念间的条件概率$p(concept | word)$和$p(word | concept)$,从而通过朴素贝叶斯的方法推出每个短文本的概念分布.这一单纯基于概率的模型无法处理由语义相关但概念不同的词组成的短文本(如“apple ipad”).为解决无法识别语境的问题,Kim等人^[14]^对Song的模型做出了改进.新的模型使用LDA主题模型,分析整条短文本的主题分布,进而<br>计算$p(concept |word ,topic)$.</p>
+<h3 id="模型粒度分析"><a href="#模型粒度分析" class="headerlink" title="模型粒度分析"></a>模型粒度分析</h3><p>本节将深入讨论第1节的短文本理解模型在文本分析粒度上的差异,并从应用层面论证不同方法的适用性.</p>
+<h4 id="文本粒度模型"><a href="#文本粒度模型" class="headerlink" title="文本粒度模型"></a>文本粒度模型</h4><p>首先,文本粒度的模型包含LSA,LDA和PV.这些模型均尝试直接推导出短文本的向量表示作为模型的输出.在LSA中,通过构建一个词与文本的共现矩阵,每个文本可用以词为维度的向量表示.类似地,LDA试图模拟文本的生成过程.作为结果,可得到每个文本的主题分布.PV通过神经网络推测(inference)的方式获取文本向量的最优参数.上述模型所得的文本向量均可以直接用于与这些文本相关的任务,如文本分类^[17-18]^、聚类^[19]^、摘要生成^[20]^。值得注意的是,LSA同时输出词向量.因而在短文本数量不足的情况下,可以先采用基于大量完整文本的LSA获取词向量,再通过额外的合成方法获取短文本向量.对于LDA和PV而言,其模型亦可以通过额外的文本训练,然后应用于短文本.</p>
+<h4 id="2-2词粒度模型"><a href="#2-2词粒度模型" class="headerlink" title="2.2词粒度模型"></a>2.2词粒度模型</h4><p>同LSA,LDA和PV相比,其他模型(LSA,NLM,ESA等)均属于词粒度的模型.这是由于这些模型的产出仅为词向量.针对短文本理解这一任务,必须使用额外的合成手段来推出短文本的表示.例如,在文献[21-25]工作中,作者均利用词向量推导出文本表示,并用于后续的文本相似度判断、文本复述、情感分析等任务.这里的一个特例为概念化模型.由于概念化可以直接基于语境推出短文本中每个词的概念,这样的输出方式已经可以满足机器短文本理解的需求.因而概念化虽属于词粒度的模型但并不需要额外的文本合成.</p>
+<h3 id="2-3文本合成"><a href="#2-3文本合成" class="headerlink" title="2.3文本合成"></a>2.3文本合成</h3><p>如何通过词向量获取任意长度的文本向量(包括短文本)是时下流行的一个研究领域.根据复杂度的不同,文本合成方法可被大致分为代数向量模型^[5,21-23,25]^、张量模型^[26-28]^和神经网络模型^[7,24,29-32]^.</p>
+<p>1)代数运算模型.最早的合成模型由Mitchell和Lapata^[21]^提出.其模型使用逐点的(point-wise)向量相加的方式从词向量推出文本向量.虽然这一基于“词袋”的方法忽略了句子中的词序(“cat eats fish”和“fish eats cat”将有相同的表示),事实表明其在很多自然语言处理任务上有着不错的效果,且其常常被用作复杂模型的基准^[23]^,类似的代数运算<br>模型还有逐点的向量乘积^[5,21-22]^以及乘法与加法的结合运算^[24]^.</p>
+<p>2)张量模型.张量模型^[26-27]^为代数运算模型的延伸.其试图强调不同词性的词在语义合成中的不同角色.例如在“red car”这个词组中,形容词“red”对名词“car”起修饰作用;而在“eat apple”中,动词“eat”的角色好比作用于“apple”的函数.从这个角度而言,将不同词性的词均表示为同等维度的向量过于简化.因而,在张量模型中,不同词性的词被表示为<br>不同维度的张量,整个句子的表示方式以张量乘法的形式获取.目前,张量模型的最大挑战是如何获取向量与张量的映射关系^[28]^.</p>
+<p>3)神经网络模型.时下最为流行的文本合成模型为基于神经网络的模型,如recursive neural network(RecNN)^[29-30]^,recurrent neural network(RNN)^[5]^,convolutional neural<br> network(CNN)^[31-32]^等.在这些模型中,最基本的合成单元为神经网络.通常的形式为神经网络根据输入向量工<strong>x~1~</strong>，<strong>x~2~</strong>:推出其组合向量<strong>y</strong>。</p>
+<p>在具体的文本合成中,不同的神经网络模型的构造不同.例如,RecNN依赖于语法树开展逐层的语义合成,它无法被用于短文本.相比之下,RNN和CNN都可以快速通过词向量推导出短文本向量.</p>
+<h3 id="文献引用"><a href="#文献引用" class="headerlink" title="文献引用"></a>文献引用</h3><p>[1] Linmei H, Yang T, Shi C, et al. Heterogeneous graph attention networks for semi-supervised short text classification[C]//Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP). 2019: 4823-4832.</p>
+<p>[2]王仲远, 程健鹏, 王海勋, 等. 短文本理解研究[J]. 计算机研究与发展, 2016, 53(2): 262-269.</p>
+<p>[3]Deerwester S, Dumais S T, Furnas G W, et al. Indexing by latent semantic analysis[J]. Journal of the American society for information science, 1990, 41(6): 391-407.</p>
+<p>[4]Lund K, Burgess C. Producing high-dimensional semantic spaces from lexical co-occurrence[J]. Behavior research methods, instruments, &amp; computers, 1996, 28(2): 203-208.</p>
+<p>[5]Turney P D, Pantel P. From frequency to meaning: Vector space models of semantics[J]. Journal of artificial intelligence research, 2010, 37: 141-188.</p>
+<p>[6]Bengio Y, Ducharme R, Vincent P, et al. A neural probabilistic language model[J]. Journal of machine learning research, 2003, 3(Feb): 1137-1155.</p>
+<p>[7]Mikolov T , Martin Karafiát, Burget L , et al. Recurrent neural network based language model[C]// INTERSPEECH 2010, 11th Annual Conference of the International Speech Communication Association, Makuhari, Chiba, Japan, September 26-30, 2010. DBLP, 2010.</p>
+<p>[8]Mikolov T, Chen K, Corrado G, et al. Efficient estimation of word representations in vector space[J]. arXiv preprint arXiv:1301.3781, 2013.</p>
+<p>[9]Song Y, Wang H, Wang Z, et al. Short text conceptualization using a probabilistic knowledgebase[C]//Twenty-Second International Joint Conference on Artificial Intelligence. 2011.</p>
+<p>[11]Hofmann T. Probabilistic latent semantic indexing[C]//Proceedings of the 22nd annual international ACM SIGIR conference on Research and development in information retrieval. 1999: 50-57.</p>
+<p>[12]Blei D M, Ng A Y, Jordan M I. Latent dirichlet allocation[J]. Journal of machine Learning research, 2003, 3(Jan): 993-1022.e</p>
+<p>[13]Gabrilovich E, Markovitch S. Computing semantic relatedness using wikipedia-based explicit semantic analysis[C]//IJcAI. 2007, 7: 1606-1611.</p>
+<p>[14]Kim D, Wang H, Oh A. Context-dependent conceptualization[C]//Twenty-Third International Joint Conference on Artificial Intelligence. 2013.</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://zhishuang.tk" rel="external nofollow noreferrer">zhishuang.rao</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://zhishuang.tk/2020/06/18/duan-wen-ben-fen-lei/">https://zhishuang.tk/2020/06/18/duan-wen-ben-fen-lei/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://zhishuang.tk" target="_blank">zhishuang.rao</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E7%BB%BC%E8%BF%B0/">
+                                    <span class="chip bg-color">综述</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%9F%AD%E6%96%87%E6%9C%AC/">
+                                    <span class="chip bg-color">短文本</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%88%86%E7%B1%BB/">
+                                    <span class="chip bg-color">分类</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">写作不易，客官能否打赏一杯奶茶？</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '0e4f7f4cf1fa4f9188ae',
+        clientSecret: '0b002fc9696f492baf3c0f762c0502131bf6696f',
+        repo: 'zhishuangR.github.io',
+        owner: 'zhishuangR',
+        admin: "zhishuangR",
+        id: '2020-06-18T15-59-07',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/06/20/jie-zhi-wang-yu-yun-fu-wu-ping-tai-ji-zhu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/zhishuangR/myImg/md/19.jpg" class="responsive-img" alt="价值网与云服务平台技术">
+                        
+                        <span class="card-title">价值网与云服务平台技术</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1．论述云平台的发展趋势、商业模式与企业需求。应从技术创新、模式创新、平台创新与服务创新等方面进行论述。注意论述与传统模式的差异（包括价值链构建的差异），开展需求分析。
+2．论述平台的技术架构。包括“互联网+”及变革性创新技术趋势下，国内外
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-20
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AF%BE%E7%A8%8B/" class="post-category">
+                                    课程
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%AF%BE%E7%A8%8B/">
+                        <span class="chip bg-color">课程</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BB%B7%E5%80%BC%E7%BD%91%E4%B8%8E%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%B9%B3%E5%8F%B0%E6%8A%80%E6%9C%AF/">
+                        <span class="chip bg-color">价值网与云服务平台技术</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/06/17/wo-yu-xiao-ke-ai/">
+                    <div class="card-image">
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/zhishuangR/myImg@master/md/20200619104910.jpg" class="responsive-img" alt="我与小可爱">
+                        
+                        <span class="card-title">我与小可爱</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            我与小可爱的点点滴滴
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B0%8F%E5%8F%AF%E7%88%B1/" class="post-category">
+                                    小可爱
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%B0%8F%E5%8F%AF%E7%88%B1/">
+                        <span class="chip bg-color">小可爱</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: zhishuang<br />'
+            + '文章作者: zhishuang.rao<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="https://zhishuang.tk" target="_blank">zhishuang.rao</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/zhishuangR" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:zhishuang.rao@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1032979481" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1032979481" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?ba085af90146944d56d67302d72f90bb";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["DaoVoiceObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            a.charset = "utf-8";
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+            "//widget.daovoice.io/widget/6984b559.js", "daovoice")
+        daovoice('init', {
+            app_id: "4bde3e35"
+        });
+        daovoice('update');
+    </script>
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

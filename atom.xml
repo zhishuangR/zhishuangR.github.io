@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>zhishuang</title>
+  
+  <subtitle>zhishuang</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://zhishuang.tk/"/>
+  <updated>2020-08-20T08:41:44.656Z</updated>
+  <id>https://zhishuang.tk/</id>
+  
+  <author>
+    <name>zhishuang.rao</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>美颜技术的普及对社会审美是好事</title>
+    <link href="https://zhishuang.tk/2020/08/20/mei-yan-ji-zhu-de-pu-ji-dui-she-hui-shen-mei-shi-hao-shi/"/>
+    <id>https://zhishuang.tk/2020/08/20/mei-yan-ji-zhu-de-pu-ji-dui-she-hui-shen-mei-shi-hao-shi/</id>
+    <published>2020-08-20T08:41:44.655Z</published>
+    <updated>2020-08-20T08:41:44.656Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;美颜技术的 &lt;strong&gt;普及&lt;/strong&gt; 对 &lt;strong&gt;社会审美&lt;/strong&gt;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>潜在语义分析</title>
+    <link href="https://zhishuang.tk/2020/07/07/qian-zai-yu-yi-fen-xi/"/>
+    <id>https://zhishuang.tk/2020/07/07/qian-zai-yu-yi-fen-xi/</id>
+    <published>2020-07-07T07:56:33.000Z</published>
+    <updated>2020-08-20T08:41:44.653Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;潜在语义分析（latent semantic analysis，LSA）是一种无监督学习方法，是非概率的话题分析模型，其特点是通过矩阵分解发现文本与单词之间的基于话题的与语义关系，具体地，将文本集合表示为单词-文本矩阵，对单词-文本矩阵进行奇异值分解（singular
+        
+      
+    
+    </summary>
+    
+    
+      <category term="机器学习" scheme="https://zhishuang.tk/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="潜在语义分析" scheme="https://zhishuang.tk/tags/%E6%BD%9C%E5%9C%A8%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90/"/>
+    
+      <category term="LSA" scheme="https://zhishuang.tk/tags/LSA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>价值网与云服务平台技术</title>
+    <link href="https://zhishuang.tk/2020/06/20/jie-zhi-wang-yu-yun-fu-wu-ping-tai-ji-zhu/"/>
+    <id>https://zhishuang.tk/2020/06/20/jie-zhi-wang-yu-yun-fu-wu-ping-tai-ji-zhu/</id>
+    <published>2020-06-20T01:54:41.000Z</published>
+    <updated>2020-08-20T08:41:44.651Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;1．论述云平台的发展趋势、商业模式与企业需求。应从技术创新、模式创新、平台创新与服务创新等方面进行论述。注意论述与传统模式的差异（包括价值链构建的差异），开展需求分析。&lt;/p&gt;
+&lt;p&gt;2．论述平台的技术架构。包括“互联网+”及变革性创新技术趋势下，国内外技术发展及平台架构的
+        
+      
+    
+    </summary>
+    
+    
+      <category term="课程" scheme="https://zhishuang.tk/categories/%E8%AF%BE%E7%A8%8B/"/>
+    
+    
+      <category term="课程" scheme="https://zhishuang.tk/tags/%E8%AF%BE%E7%A8%8B/"/>
+    
+      <category term="价值网与云服务平台技术" scheme="https://zhishuang.tk/tags/%E4%BB%B7%E5%80%BC%E7%BD%91%E4%B8%8E%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%B9%B3%E5%8F%B0%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>短文本分类</title>
+    <link href="https://zhishuang.tk/2020/06/18/duan-wen-ben-fen-lei/"/>
+    <id>https://zhishuang.tk/2020/06/18/duan-wen-ben-fen-lei/</id>
+    <published>2020-06-18T07:59:07.000Z</published>
+    <updated>2020-08-20T08:41:44.654Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;大纲目录&quot;&gt;&lt;a href=&quot;#大纲目录&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="短文本" scheme="https://zhishuang.tk/categories/%E7%9F%AD%E6%96%87%E6%9C%AC/"/>
+    
+    
+      <category term="综述" scheme="https://zhishuang.tk/tags/%E7%BB%BC%E8%BF%B0/"/>
+    
+      <category term="短文本" scheme="https://zhishuang.tk/tags/%E7%9F%AD%E6%96%87%E6%9C%AC/"/>
+    
+      <category term="分类" scheme="https://zhishuang.tk/tags/%E5%88%86%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我与小可爱</title>
+    <link href="https://zhishuang.tk/2020/06/17/wo-yu-xiao-ke-ai/"/>
+    <id>https://zhishuang.tk/2020/06/17/wo-yu-xiao-ke-ai/</id>
+    <published>2020-06-17T14:42:22.000Z</published>
+    <updated>2020-08-21T14:04:57.546Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;6.17
+        
+      
+    
+    </summary>
+    
+    
+      <category term="小可爱" scheme="https://zhishuang.tk/categories/%E5%B0%8F%E5%8F%AF%E7%88%B1/"/>
+    
+    
+      <category term="小可爱" scheme="https://zhishuang.tk/tags/%E5%B0%8F%E5%8F%AF%E7%88%B1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>异构图神经网络</title>
+    <link href="https://zhishuang.tk/2020/06/07/yi-gou-tu-shen-jing-wang-luo/"/>
+    <id>https://zhishuang.tk/2020/06/07/yi-gou-tu-shen-jing-wang-luo/</id>
+    <published>2020-06-07T02:21:53.000Z</published>
+    <updated>2020-08-20T08:41:44.651Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;转自&lt;a href=&quot;https://www.jiqizhixin.com/articles/2019-10-14-5&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="图网络" scheme="https://zhishuang.tk/categories/%E5%9B%BE%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="异构图" scheme="https://zhishuang.tk/tags/%E5%BC%82%E6%9E%84%E5%9B%BE/"/>
+    
+      <category term="图网络" scheme="https://zhishuang.tk/tags/%E5%9B%BE%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>短文本分类架构梳理</title>
+    <link href="https://zhishuang.tk/2020/06/06/duan-wen-ben-fen-lei-jia-gou-shu-li/"/>
+    <id>https://zhishuang.tk/2020/06/06/duan-wen-ben-fen-lei-jia-gou-shu-li/</id>
+    <published>2020-06-06T08:55:38.000Z</published>
+    <updated>2020-08-20T08:41:44.655Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;什么是短文本&quot;&gt;&lt;a href=&quot;#什么是短文本&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="短文本理解" scheme="https://zhishuang.tk/categories/%E7%9F%AD%E6%96%87%E6%9C%AC%E7%90%86%E8%A7%A3/"/>
+    
+    
+      <category term="短文本" scheme="https://zhishuang.tk/tags/%E7%9F%AD%E6%96%87%E6%9C%AC/"/>
+    
+      <category term="分类" scheme="https://zhishuang.tk/tags/%E5%88%86%E7%B1%BB/"/>
+    
+      <category term="NLP" scheme="https://zhishuang.tk/tags/NLP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mathjax 公式渲染修复</title>
+    <link href="https://zhishuang.tk/2020/05/19/mathjax-gong-shi-xuan-ran-xiu-fu/"/>
+    <id>https://zhishuang.tk/2020/05/19/mathjax-gong-shi-xuan-ran-xiu-fu/</id>
+    <published>2020-05-19T05:52:59.000Z</published>
+    <updated>2020-08-20T08:41:44.645Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="https://zhishuang.tk/categories/hexo/"/>
+    
+    
+      <category term="mathjax渲染" scheme="https://zhishuang.tk/tags/mathjax%E6%B8%B2%E6%9F%93/"/>
+    
+      <category term="hexo" scheme="https://zhishuang.tk/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RNN 架构梳理</title>
+    <link href="https://zhishuang.tk/2020/05/19/rnn-jia-gou-shu-li/"/>
+    <id>https://zhishuang.tk/2020/05/19/rnn-jia-gou-shu-li/</id>
+    <published>2020-05-19T05:02:57.000Z</published>
+    <updated>2020-08-20T08:41:44.641Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;RNN架构梳理&quot;&gt;&lt;a href=&quot;#RNN架构梳理&quot; class=&quot;headerlink&quot; title=&quot;RNN架构梳理&quot;&gt;&lt;/a&gt;RNN架构梳理&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;vanilla
+        
+      
+    
+    </summary>
+    
+    
+      <category term="RNN" scheme="https://zhishuang.tk/categories/RNN/"/>
+    
+    
+      <category term="RNN" scheme="https://zhishuang.tk/tags/RNN/"/>
+    
+      <category term="架构梳理" scheme="https://zhishuang.tk/tags/%E6%9E%B6%E6%9E%84%E6%A2%B3%E7%90%86/"/>
+    
+      <category term="文本分类" scheme="https://zhishuang.tk/tags/%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB/"/>
+    
+      <category term="深度学习" scheme="https://zhishuang.tk/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HBase shell 基本操作</title>
+    <link href="https://zhishuang.tk/2020/05/09/hbase-shell-ji-ben-cao-zuo/"/>
+    <id>https://zhishuang.tk/2020/05/09/hbase-shell-ji-ben-cao-zuo/</id>
+    <published>2020-05-09T06:46:32.000Z</published>
+    <updated>2020-08-20T08:41:44.640Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;创建表：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;create &#39;student&#39;,&#39;info&#39;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;插入数据到表：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;put
+        
+      
+    
+    </summary>
+    
+    
+      <category term="大数据" scheme="https://zhishuang.tk/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+      <category term="hbsse" scheme="https://zhishuang.tk/tags/hbsse/"/>
+    
+      <category term="大数据" scheme="https://zhishuang.tk/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Zookeeper+Hadoop+HBase搭建</title>
+    <link href="https://zhishuang.tk/2020/05/07/zookeeper-hadoop-hbase-da-jian/"/>
+    <id>https://zhishuang.tk/2020/05/07/zookeeper-hadoop-hbase-da-jian/</id>
+    <published>2020-05-07T13:54:26.000Z</published>
+    <updated>2020-08-20T08:41:44.645Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;a href=&quot;https://zhishuang.tk/2020/04/30/ubuntu1604-da-jian-hadoop-ji-qun/&quot;&gt;Hadoop搭建&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="大数据" scheme="https://zhishuang.tk/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+      <category term="大数据" scheme="https://zhishuang.tk/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="hadoop" scheme="https://zhishuang.tk/tags/hadoop/"/>
+    
+      <category term="zookeeper" scheme="https://zhishuang.tk/tags/zookeeper/"/>
+    
+      <category term="hbase" scheme="https://zhishuang.tk/tags/hbase/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hadoop HA 搭建</title>
+    <link href="https://zhishuang.tk/2020/05/06/hadoop-ha-da-jian/"/>
+    <id>https://zhishuang.tk/2020/05/06/hadoop-ha-da-jian/</id>
+    <published>2020-05-06T12:30:35.000Z</published>
+    <updated>2020-08-20T08:41:44.641Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;所谓HA（High Available）是Hadoop2.0中引入来解决Hadoop1.0中单点故障问题的一种机制。HA严格来说应该分成各个组件的HA机制：HDFS的HA和YARN的HA。&lt;/p&gt;
+&lt;h2 id=&quot;HDFS-HA集群配置&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="大数据" scheme="https://zhishuang.tk/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+      <category term="大数据" scheme="https://zhishuang.tk/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="高可用" scheme="https://zhishuang.tk/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/"/>
+    
+      <category term="HA" scheme="https://zhishuang.tk/tags/HA/"/>
+    
+      <category term="hadoop" scheme="https://zhishuang.tk/tags/hadoop/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【求甚解】怎样评价一个模型的泛化能力</title>
+    <link href="https://zhishuang.tk/2020/05/03/qiu-shen-jie-zen-yang-ping-jie-yi-ge-mo-xing-de-fan-hua-neng-li/"/>
+    <id>https://zhishuang.tk/2020/05/03/qiu-shen-jie-zen-yang-ping-jie-yi-ge-mo-xing-de-fan-hua-neng-li/</id>
+    <published>2020-05-03T14:34:59.000Z</published>
+    <updated>2020-08-20T08:41:44.648Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;一般来说通过泛化误差来评价一个模型的泛化能力。那什么是泛化误差呢？所谓的泛化误差就是用来衡量一个学习机器推广未知数据的能力，即根据从样本数据中学习到的规则能够应用到新数据的能力。&lt;/p&gt;
+&lt;p&gt;泛化误差也称作期望误差，与之相对的有一个经验误差，经验误差就是模型在训练数据集上
+        
+      
+    
+    </summary>
+    
+    
+      <category term="求甚解" scheme="https://zhishuang.tk/categories/%E6%B1%82%E7%94%9A%E8%A7%A3/"/>
+    
+    
+      <category term="求甚解" scheme="https://zhishuang.tk/tags/%E6%B1%82%E7%94%9A%E8%A7%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>胶囊网络</title>
+    <link href="https://zhishuang.tk/2020/05/01/xiao-nang-wang-luo/"/>
+    <id>https://zhishuang.tk/2020/05/01/xiao-nang-wang-luo/</id>
+    <published>2020-05-01T08:32:06.000Z</published>
+    <updated>2020-08-20T08:41:44.656Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;script&gt;
+        document.querySelectorAll(&#39;.github-emoji&#39;)
+          .forEach(el =&gt; {
+            if (!el.dataset.src) { return; }
+       
+        
+      
+    
+    </summary>
+    
+    
+      <category term="深度学习" scheme="https://zhishuang.tk/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="胶囊网络" scheme="https://zhishuang.tk/tags/%E8%83%B6%E5%9B%8A%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="Capsule Networks" scheme="https://zhishuang.tk/tags/Capsule-Networks/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu1604 搭建Hadoop集群</title>
+    <link href="https://zhishuang.tk/2020/04/30/ubuntu1604-da-jian-hadoop-ji-qun/"/>
+    <id>https://zhishuang.tk/2020/04/30/ubuntu1604-da-jian-hadoop-ji-qun/</id>
+    <published>2020-04-30T08:28:34.000Z</published>
+    <updated>2020-08-20T08:41:44.645Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;系统环境&quot;&gt;&lt;a href=&quot;#系统环境&quot; class=&quot;headerlink&quot; title=&quot;系统环境&quot;&gt;&lt;/a&gt;系统环境&lt;/h2&gt;&lt;div
+        
+      
+    
+    </summary>
+    
+    
+      <category term="大数据" scheme="https://zhishuang.tk/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+      <category term="hadoop" scheme="https://zhishuang.tk/tags/hadoop/"/>
+    
+      <category term="集群" scheme="https://zhishuang.tk/tags/%E9%9B%86%E7%BE%A4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu1604 设置静态IP</title>
+    <link href="https://zhishuang.tk/2020/04/30/ubuntu1604-she-zhi-jing-tai-ip/"/>
+    <id>https://zhishuang.tk/2020/04/30/ubuntu1604-she-zhi-jing-tai-ip/</id>
+    <published>2020-04-30T07:29:44.000Z</published>
+    <updated>2020-08-20T08:41:44.646Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;首先确保是NAT连接模式&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在VMware Workstation的“编辑”选项找到虚拟网络编辑器，在虚拟网络编辑器面板中找到NAT设置，获取子网掩码和网关。&lt;/p&gt;
+&lt;p&gt; &lt;img
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://zhishuang.tk/categories/Linux/"/>
+    
+    
+      <category term="IP" scheme="https://zhishuang.tk/tags/IP/"/>
+    
+      <category term="静态IP" scheme="https://zhishuang.tk/tags/%E9%9D%99%E6%80%81IP/"/>
+    
+      <category term="Ubuntu" scheme="https://zhishuang.tk/tags/Ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Todo-List</title>
+    <link href="https://zhishuang.tk/2020/04/30/todo-list/"/>
+    <id>https://zhishuang.tk/2020/04/30/todo-list/</id>
+    <published>2020-04-30T06:46:32.000Z</published>
+    <updated>2020-08-20T08:41:44.643Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;前馈网络架构梳理&lt;ul&gt;
+&lt;li&gt;MLP（Multi-Layer Perceptrons）&lt;/li&gt;
+&lt;li&gt;DAN（Deep unordered composition rivals syntactic methods for text
+        
+      
+    
+    </summary>
+    
+    
+      <category term="待完成" scheme="https://zhishuang.tk/categories/%E5%BE%85%E5%AE%8C%E6%88%90/"/>
+    
+    
+      <category term="todo list" scheme="https://zhishuang.tk/tags/todo-list/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【文献翻译】基于深度学习的文本分类：全面回顾</title>
+    <link href="https://zhishuang.tk/2020/04/27/wen-xian-fan-yi-ji-yu-shen-du-xue-xi-de-wen-ben-fen-lei-quan-mian-hui-gu/"/>
+    <id>https://zhishuang.tk/2020/04/27/wen-xian-fan-yi-ji-yu-shen-du-xue-xi-de-wen-ben-fen-lei-quan-mian-hui-gu/</id>
+    <published>2020-04-27T12:42:51.000Z</published>
+    <updated>2020-08-20T08:41:44.647Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="文献翻译" scheme="https://zhishuang.tk/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="文本分类" scheme="https://zhishuang.tk/tags/%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB/"/>
+    
+      <category term="综述" scheme="https://zhishuang.tk/tags/%E7%BB%BC%E8%BF%B0/"/>
+    
+      <category term="文献翻译" scheme="https://zhishuang.tk/tags/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>个人可持续性发展</title>
+    <link href="https://zhishuang.tk/2020/04/21/ge-ren-ke-chi-xu-xing-fa-zhan/"/>
+    <id>https://zhishuang.tk/2020/04/21/ge-ren-ke-chi-xu-xing-fa-zhan/</id>
+    <published>2020-04-21T03:28:54.000Z</published>
+    <updated>2020-08-20T08:41:44.649Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;不要很拼
+        
+      
+    
+    </summary>
+    
+    
+      <category term="杂" scheme="https://zhishuang.tk/categories/%E6%9D%82/"/>
+    
+    
+      <category term="可持续性发展" scheme="https://zhishuang.tk/tags/%E5%8F%AF%E6%8C%81%E7%BB%AD%E6%80%A7%E5%8F%91%E5%B1%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>了不起的盖茨比</title>
+    <link href="https://zhishuang.tk/2020/04/11/liao-bu-qi-de-gai-ci-bi/"/>
+    <id>https://zhishuang.tk/2020/04/11/liao-bu-qi-de-gai-ci-bi/</id>
+    <published>2020-04-11T02:34:01.000Z</published>
+    <updated>2020-08-20T08:41:44.650Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;  盖茨比——一个可怜、可爱、可敬勇士。&lt;/p&gt;
+&lt;p&gt;  盖茨比的了不起，千金散尽博红颜笑，纸醉金迷为心中念。盖茨比本人是极其单纯的，出生不好，却仰望星空，渴望走出大山走向世界；出生不好，却爱上豪门爱女，命运捉弄赶赴战场；出生不好，却怀有梦想，他未来的每一步都在向那个女孩
+        
+      
+    
+    </summary>
+    
+    
+      <category term="影评" scheme="https://zhishuang.tk/categories/%E5%BD%B1%E8%AF%84/"/>
+    
+    
+      <category term="影评" scheme="https://zhishuang.tk/tags/%E5%BD%B1%E8%AF%84/"/>
+    
+  </entry>
+  
+</feed>

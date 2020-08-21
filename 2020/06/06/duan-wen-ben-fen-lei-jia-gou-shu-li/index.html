@@ -1,0 +1,1390 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="短文本 分类 NLP">
+    <meta name="description" content="西南交通大学 | 软件工程 | 自然语言处理">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162104665-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-162104665-1');
+</script>
+
+
+    <title>短文本分类架构梳理 | zhishuang</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/zhishuangR/myImg@master/md/logo.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="zhishuang" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/zhishuangR/myImg@master/md/logo(已去底).png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">zhishuang</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/zhishuangR/myImg@master/md/logo(已去底).png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">zhishuang</div>
+        <div class="logo-desc">
+            
+            西南交通大学 | 软件工程 | 自然语言处理
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/zhishuangR" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/zhishuangR" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/zhishuangR/myImg/md/13.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">短文本分类架构梳理</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%9F%AD%E6%96%87%E6%9C%AC/">
+                                <span class="chip bg-color">短文本</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%88%86%E7%B1%BB/">
+                                <span class="chip bg-color">分类</span>
+                            </a>
+                        
+                            <a href="/tags/NLP/">
+                                <span class="chip bg-color">NLP</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%9F%AD%E6%96%87%E6%9C%AC%E7%90%86%E8%A7%A3/" class="post-category">
+                                短文本理解
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-06-06
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-08-20
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    10.1k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    37 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h3 id="什么是短文本"><a href="#什么是短文本" class="headerlink" title="什么是短文本"></a>什么是短文本</h3><p>短文本是相对于长文本而言的，通常指书评、影评、聊天记录、产品介绍等短文本，这些文本中包含了大量有价值的隐含信息，但现有的研究大多集中在长文本上，且长文本的分类算法无法直接应用于短文本分类^[1]^,这是因为短文本通常词汇个数少且描述信息弱，具有稀疏性和歧义且通常标签数据较少。</p>
+<h3 id="传统短文本分类算法"><a href="#传统短文本分类算法" class="headerlink" title="传统短文本分类算法"></a>传统短文本分类算法</h3><p>基于传统机器学习的短文本分类方法主要是对文本分类进行预处理、特征提取、然后将处理后的文本向量化，最后通过常见的机器学习分类算法来对训练数据集建模</p>
+<p>传统的短文本分类算法中，文本特征提取出的特征质量对文本分类精度有很大的影响</p>
+<h3 id="基于深度学习的短文本分类算法"><a href="#基于深度学习的短文本分类算法" class="headerlink" title="基于深度学习的短文本分类算法"></a>基于深度学习的短文本分类算法</h3><p>短文本分类是理解短文本的重要方法之一，适用于广泛的应用，包括情感分析（Wang et al.2014），对话系统（Lee和Dernoncourt 2016）以及用户理解（Hu et al.2009）。与段落或文档相比，短文本更加模糊，因为它们没有足够的上下文信息</p>
+<p>与传统基于机器学习的短文本分类算法不同，基于深度学习的短文本分类算法则是通过例如CNN等深度学习模型来对数据进行训练，无需人工对数据进行特征提取，对文本分类精度影响更多的是数据量以及训练迭代次数。</p>
+<p>一般流程为先使用深度学习的词向量技术，把文本数据转换为连续稠密向量，用来表示文本。再将得到的向量表示作为深度学习模型的特征输入，利用CNN/RNN等深度学习网络及其变体自动提取特征。</p>
+<p>文本分类模型如下：</p>
+<p>​    1） FastText</p>
+<p>FastText是Facebook开源的词向量与文本分类工具，模型简单，训练速度快。FastText 的原理是将短文本中的所有词向量进行平均，然后直接接softmax层，同时加入一些n-gram 特征的 trick 来捕获局部序列信息。相对于其它文本分类模型，如SVM，Logistic Regression和Neural Network等模型，FastText在保持分类效果的同时，大大缩短了训练时间，同时支持多语言表达，但其模型是基于词袋针对英文的文本分类方法，组成英文句子的单词是有间隔的，而应用于中文文本，需分词去标点转化为模型需要的数据格式。</p>
+<p>​    2）TextCNN</p>
+<p>TextCNN相比于FastText，利用CNN (Convolutional Neural Network）来提取句子中类似 n-gram 的关键信息，且结构简单，效果好。</p>
+<p>​    3）TextRNN</p>
+<p>尽管TextCNN能够在很多任务里面能有不错的表现，但CNN最大的问题是固定 filter_size 的视野，一方面无法建模更长的序列信息，另一方面 filter_size 的超参调节很繁琐。CNN本质是做文本的特征表达工作，而自然语言处理中更常用的是递归神经网络（RNN, Recurrent Neural Network），能够更好的表达上下文信息。具体在文本分类任务中，Bi-directional RNN（实际使用的是双向LSTM）从某种意义上可以理解为可以捕获变长且双向的的 “n-gram” 信息。</p>
+<p>4）TextRNN + Attention</p>
+<p>CNN和RNN用在文本分类任务中尽管效果显著，但都有一个缺点，直观性和可解释性差。而注意力（Attention）机制是自然语言处理领域一个常用的建模长时间记忆机制，能够直观的给出每个词对结果的贡献，是Seq2Seq模型的标配。实际上文本分类从某种意义上也、可以理解为一种特殊的Seq2Seq，所以可以考虑将Attention机制引入。</p>
+<p>Attention的核心点是在翻译每个目标词（或预测商品标题文本所属类别）所用的上下文是不同的，这样更合理。加入Attention之后能够直观的解释各个句子和词对分类类别的重要性。</p>
+<p>5）TextRCNN（TextRNN + CNN）</p>
+<p>用前向和后向RNN得到每个词的前向和后向上下文的表示，这样词的表示就变成词向量和前向后向上下文向量concat起来的形式，最后连接TextCNN相同卷积层，pooling层即可，唯一不同的是卷积层 filter_size = 1。</p>
+<h3 id="短文本分类应用场景"><a href="#短文本分类应用场景" class="headerlink" title="短文本分类应用场景"></a>短文本分类应用场景</h3><p>短文本分类算法广泛应用于各个行业领域,如新闻分类、人机写作判断、垃圾邮件识别、用户情感分类、文案智能生成、商品智能推荐等。</p>
+<p>场景一：商品智能推荐，根据用户购买的商品名称作为预测样本进行文本分类，得到用户交易类别，结合其他数据构建用户画像，针对不同特征的用户画像预测用户下一步的购买行为，智能推荐商品及服务。</p>
+<p>场景二：文案智能生成，基于优质文案作为训练集，得到文本分类模型，当用户输入关键词时，智能推荐适配文案。</p>
+<p>场景三：给新闻自动分类或打标签，多个标签。</p>
+<p>场景四：判断文章是人写还是机器写的。</p>
+<p>场景五：判断影评中的情感是正向、负向、中立，相类似应用场景很</p>
+<h3 id="文献引用"><a href="#文献引用" class="headerlink" title="文献引用"></a>文献引用</h3><p>[1] Linmei, H., Yang, T., Shi, C., Ji, H., &amp; Li, X. (2019, November). Heterogeneous graph attention networks for semi-supervised short text classification. In <em>Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)</em> (pp. 4823-4832).</p>
+<p>[2]王仲远, 程健鹏, 王海勋, 等. 短文本理解研究[J]. 计算机研究与发展, 2016, 53(2): 262-269.</p>
+<p>[3]Deerwester S, Dumais S T, Furnas G W, et al. Indexing by latent semantic analysis[J]. Journal of the American society for information science, 1990, 41(6): 391-407.</p>
+<p>[4]Lund K, Burgess C. Producing high-dimensional semantic spaces from lexical co-occurrence[J]. Behavior research methods, instruments, &amp; computers, 1996, 28(2): 203-208.</p>
+<p>[5]Turney P D, Pantel P. From frequency to meaning: Vector space models of semantics[J]. Journal of artificial intelligence research, 2010, 37: 141-188.</p>
+<p>[6]Bengio Y, Ducharme R, Vincent P, et al. A neural probabilistic language model[J]. Journal of machine learning research, 2003, 3(Feb): 1137-1155.</p>
+<p>[7]Mikolov T , Martin Karafiát, Burget L , et al. Recurrent neural network based language model[C]// INTERSPEECH 2010, 11th Annual Conference of the International Speech Communication Association, Makuhari, Chiba, Japan, September 26-30, 2010. DBLP, 2010.</p>
+<p>[8]Mikolov T, Chen K, Corrado G, et al. Efficient estimation of word representations in vector space[J]. arXiv preprint arXiv:1301.3781, 2013.</p>
+<h2 id="论文阅读"><a href="#论文阅读" class="headerlink" title="论文阅读"></a>论文阅读</h2><h3 id="题目：Short-Text-Classification-A-Survey"><a href="#题目：Short-Text-Classification-A-Survey" class="headerlink" title="题目：Short Text Classification: A Survey"></a>题目：Short Text Classification: A Survey</h3><p>分类方式：</p>
+<ul>
+<li>short text classification using sematic analysis（语义分析）</li>
+<li>semi-supervised short text classification（半监督）</li>
+<li>ensemble short text classification（集成学习）</li>
+<li>real-time classification.</li>
+</ul>
+<h3 id="I-INTRODUCTION"><a href="#I-INTRODUCTION" class="headerlink" title="I. INTRODUCTION"></a>I. INTRODUCTION</h3><p>随着电子商务和在线通信的爆炸式增长，在许多应用领域中都可以使用短文本，例如即时消息，在线聊天日志，公告板系统标题，Web日志评论，Internet新闻评论，SMS，Twitter等。因此，成功在许多Web和IR应用程序中处理它们变得越来越重要。 但是，对这些类型的文本和Web数据进行分类是一个新的挑战。</p>
+<p>与普通文档不同，这些文本和Web段通常更嘈杂，主题更少，并且更短，也就是说，它们由十几个单词到几个句子组成[1]。 由于篇幅短，它们无法提供足够的单词共现或共享语境，无法实现良好的相似度[40]。 因此，依赖于词频，足够的词共现或共享上下文来测量文档相似度的常规机器学习方法通常由于数据稀疏而无法达到期望的准确性。</p>
+<p>出现了针对短文本的新分类方法，例如语义分析，半监督短文本分类，集成短文本分类、实时分类。然而，与许多有关文本分类的评论和调查相比，只有很少的调查来讨论有关短文本分类的最新研究。 本文分析了与短文本分类相关的挑战，并系统地总结了使用分析方法对短文本分类进行分类的现有方法。</p>
+<p>在分析了短文本的特点和难点之后，我们在第二节中指出了短文本分类的过程。 第三节介绍了基于语义分析的短文本分类。 我们在第四节中描述了一些关于半监督短文本分类的算法。 第五节和第六节分别介绍了用于对短文本进行分类和在线短文本分类的集成模型。 我们在第七节中分析了相关的评估措施。 在第八节中，我们总结了对短文本进行分类的方法。</p>
+<h3 id="II-BACKGROUNDS"><a href="#II-BACKGROUNDS" class="headerlink" title="II. BACKGROUNDS"></a>II. BACKGROUNDS</h3><h4 id="A-Feature-of-Short-Text"><a href="#A-Feature-of-Short-Text" class="headerlink" title="A. Feature of Short Text"></a>A. Feature of Short Text</h4><p>通常，短文本的特征如下[1] [2]：</p>
+<p>稀疏性：简短的文本仅包含数个到十几个具有某些功能的单词，它不能提供足够的单词共现或共享上下文，无法提供良好的相似性度量。 很难提取其有效的语言功能。</p>
+<p>即时性：短文本会立即发送并实时接收。 另外，数量非常大。</p>
+<p>非标准性：简短的文字说明简洁明了，有许多拼写错误，非标准术语和噪音。</p>
+<p>噪音和分布不平衡：应用程序背景（例如网络安全性）需要处理大量的短文本数据。 但是，我们可能只关注大规模数据中的一小部分（检测对象）。 因此，有用的实例是有限的，并且短文本的分布是不平衡的。</p>
+<p>大型数据和标记瓶颈：手动标记所有大型实例很困难。 标签数量有限的实例只能提供有限的信息。 因此，如何充分利用这些标记的实例和其他未标记的实例已经成为短文本分类的关键问题。</p>
+<p>大多数传统方法（例如SVM，BAYES和KNN）都是基于术语频率的相似性，而忽略了短文本的特征。 这些传统方法可能无法处理短文本分类。 如果标记的信息不足，它们中的大多数（例如BAYES）可能无法获得高精度。 另外，一些基于向量空间模型（SVM）的分类方法应该使用语义信息来提高分类器的性能。</p>
+<h4 id="B-Short-Text-Classification"><a href="#B-Short-Text-Classification" class="headerlink" title="B. Short Text Classification"></a>B. Short Text Classification</h4><p>在过去的十年中，已经深入研究了对文本和Web文档进行分类的学习。 许多学习方法，例如k个最近邻（k-NN），朴素贝叶斯（Naive Bayes），最大熵和支持向量机（SVM），已应用于具有不同基准集合的许多分类问题，并取得了令人满意的结果。 但是，由于短文字的特点和难度，传统的分类方法不适合短文本分类。 因此，如何合理地表示和选择特征项，有效地减小空间尺寸和噪声，提高分类精度成为短文本分类的问题。</p>
+<h4 id="III-SHORT-TEXT-CLASSIFICATION-BASED-ON-SEMANTIC-ANALYSIS"><a href="#III-SHORT-TEXT-CLASSIFICATION-BASED-ON-SEMANTIC-ANALYSIS" class="headerlink" title="III. SHORT TEXT CLASSIFICATION BASED ON SEMANTIC ANALYSIS"></a>III. SHORT TEXT CLASSIFICATION BASED ON SEMANTIC ANALYSIS</h4><p>目前，减少特征空间维数的解决方案主要基于语义特征和语义分析。 这是因为文本分类的处理通常是在向量空间模型（VSM）中进行的，其基本假设是单词之间的关系是独立的，而忽略了文本之间的相关性。但是，短文本的语义表达能力较弱，需要这种相关性。 传统分类不能区分自然语言的歧义词和同义词，所有这些在短文本中都很丰富。 因此，传统的分类方法通常无法达到预期的短文本准确性。</p>
+<p>语义分析更加关注概念，内部结构的语义层次以及文本的相关性，从而获得了更具表现力和客观性的逻辑结构。 在现有研究中，基于潜在语义分析的分类占有重要地位。 使用统计方法，潜在语义分析可提取潜在的语义结构，消除同义词影响，并减少特征维数和噪声。因此，提出了许多基于语义分析的算法来处理短文本分类（更多详细信息见表I）[3] [5-11] [44]。  Zelikovitz [3]将其应用于短文本分类。  Pu强等[5]将LSA和独立成分分析（ICA）[8] [42]结合在一起。  Xuan-Hieu Phan等[7]建立了大规模的短文本分类框架。 该框架主要基于最近成功的潜在主题分析模型（例如pLSA和LDA）和强大的机器学习方法（例如最大熵和SVM）。王炳坤等[9]提出了一种新的方法，通过基于潜在狄利克雷分配（LDA）和信息增益（IG）模型构建强大的词库（SFT）来解决该问题。 当使用句法或语义信息时，提出了语言独立语义（LIS）内核[10]以增强语言依赖性。 它能够有效地计算短文本文档之间的相似度，而无需使用语法标记和词汇数据库。 陈梦根等[11]提出了一种以多种粒度提取主题的方法，该方法可以更精确地建模短文本。 转换式LSA [3] [4]是基于LSA的短文本分类的另一个示例。 转导利用测试示例来选择学习者的假设。 通过合并测试示例来重新创建空间确实会根据测试示例选择一种表示形式。 训练/测试集的维数减少使得较小的空间可以更准确地反映将应用于分类的测试集。 通过将测试示例包含到原始矩阵中，LSA可以计算单词与单词的熵权以及测试集中单词的示例和共现。</p>
+<h4 id="IV-SEMI-SUPERVISED-SHORT-TEXT-CLASSIFICATION"><a href="#IV-SEMI-SUPERVISED-SHORT-TEXT-CLASSIFICATION" class="headerlink" title="IV. SEMI-SUPERVISED SHORT TEXT CLASSIFICATION"></a>IV. SEMI-SUPERVISED SHORT TEXT CLASSIFICATION</h4><p>半监督学习是指使用标记和未标记的数据进行训练。 它对比了监督学习（所有数据都标记）或无监督学习（所有数据都未标记）。用于学习问题的标记数据的获取通常需要熟练的人工代理手动对训练示例进行分类。 因此，与标记过程相关的成本可能使完全标记的训练集变得不可行，而未标记数据的获取相对便宜。 在这种情况下，半监督学习可能具有很大的实用价值[27]。</p>
+<p>大多数半监督的短文本分类都是灵活的半监督学习。 它可以利用未标记的数据来改进分类器。 但是，与传统的半监督学习算法不同，通用数据和训练/测试数据不需要具有相同的格式。 此外，一旦进行了估计，只要主题模型是一致的，就可以将其应用于多个分类问题。</p>
+<p>背景知识可能会提供一个文本语料库，其中包含有关单词重要性和单词联合概率的信息[29] [6]。 我们可以结合使用背景和培训示例来标记新示例。</p>
+<p>V. ENSEMBLE SHORT TEXT CLASSIFICATION</p>
+<p>VI. REAL-TIME CLASSIFICATION OF LARGE SCALE SHORT TEXT</p>
+<p>即时性是短文本的另一个功能，这意味着短文本会立即发送并实时接收，通常数量非常大。 因此，如何立即对大规模的短文本数据进行分类也成为一个重要的问题。 目前，与几种经典分类算法相比，经常选择贝叶斯算法作为在线分类器。 朴素贝叶斯算法通过计算文本属于每个类别的概率来判断类别，这是一种简单，准确且广泛使用的算法[39]。</p>
+<h3 id="题目：短文本理解研究"><a href="#题目：短文本理解研究" class="headerlink" title="题目：短文本理解研究"></a>题目：短文本理解研究</h3><p>与长文本不同,短文本通常不遵循语法规则,并且长度短、没有足够的信息量来进行统计推断,机器很难在有限的语境中进行准确的推断.此外,由于短文本常常不遵循语法,自然语言处理技术(如词性标注和句法解析等)难以直接应用于短文本分析^[2]^.</p>
+<p>许多相关工作^[1-3]^证明,自动化的短文本分类需要依赖额外的知识.这些知识可以帮助机器充分挖掘短文本中词与词之间的联系,如语义相关性.例如,在英文查询“premiere Lincoln”中,“premiere”是一个重要的信息,表明“Lincoln”在这里指的是“电影”;同样,在“watch harry potter”中,正因为“watch”的出现,“harry potter”的含义可被鉴定为“电影”或“DVD”,而不是“书籍”.但是,这些关于词汇的知识(例如“watch”的对象通常是“电影”)并没有在短文本中明确表示出来,因而需要通过额外的知识源获取.</p>
+<p>根据所需知识源的属性,将短文本理解模型分为3类:</p>
+<ul>
+<li>隐性(implicit)语义模型</li>
+<li>半显性(semi-explicit)语义模型</li>
+<li>显性(explicit)语义模型</li>
+</ul>
+<p>其中,隐形和半显性模型试图从大量文本数据中挖掘出词与词之间的联系,从而应用于短文本理解.相比之下,显性模型使用人工构建的大规模知识库和词典辅助短文本理解.</p>
+<p>从另一个角度而言,短文本理解模型在文本分析上的粒度也有差异.部分方法直接模拟短文本的表示方式,因此本文将其归为“文本”粒度.其余大多方法则以词为基础.这些方法首先推出每个词的表示,然后使用额外的合成方式推出短文本的表示.本文将这些方法归为“词”粒度</p>
+<h4 id="隐性-implicit-语义模型"><a href="#隐性-implicit-语义模型" class="headerlink" title="隐性(implicit)语义模型"></a>隐性(implicit)语义模型</h4><p>隐性语义模型产生的短文本通常表示为映射在一个语义空间上的隐性向量.这个向量的每个维度所代表的含义人们无法解释,只能用于机器计算.以下将介绍4种代表性的隐性语义模型.</p>
+<ul>
+<li>LSA(latent semantic analysis)^[3]^</li>
+</ul>
+<p>LSA旨在用统计方法分析大量文本,从而推出词与文本的含义表示.其思想核心是在相同语境下出现的词具有较高的语义相关性.具体而言,LSA构建一个庞大的词与文本的共现矩阵.对于每个词向量,它的每个维度都代表一个文本;对于每个文本向量,其每个维度代表一个词.通常,矩阵每项的输入是经过平滑或转化的共现次数.常用的转化方法为TF-IDF.最终,LSA通过奇异值分解(SVD)的方法将原始矩阵降维.在短文本的情境下,LSA有2种使用方式:首先,在语料足够多的离线任务上，LSA可以直接构建一个词与短文本的共现矩阵,从而推出每个短文本的表示;其次,在训练数据较小的情境下,或针对线上任务(针对测试数据),可以事先通过标准的LSA方法得到每个词向量,然后使用额外的语义合成方式获取短文本向量.</p>
+<ul>
+<li>超空间模拟语言模型^[4]^</li>
+</ul>
+<p>超空间模拟语言模型(hyperspace analogue to language model, HAL)与LSA的主要区别在于前者是更加纯粹的“词模型”.HAL旨在构建一个词与词的共现矩阵.对于每个词向量,它的每个维度代表一个“语境词”. 模型统计目标词汇与语境词汇的共现次数,并经过相应的平滑或转换(如TF-IDF, pointwise mutual information等)得到矩阵中每个输入的值.通常,语境词的选取有较大的灵活性.例如,语境词可被选为整个词汇,或者除停止<br>词外的高频词[5].类比LSA,在HAL中可以根据原始向量的维度和任务要求选择是否对原始向量进行降维.由于HAL的产出仅仅为词向量,在短文本理解这一任务中需采用额外的合成方式(如向量相加)来推出短文本向量.</p>
+<ul>
+<li>神经网络语言模型</li>
+</ul>
+<p>近年来，随着神经网络和特征学习的发展,传统的HAL逐渐被神经网络语言模型(neural language model, NLM)^[6-8]^取代.与HAL通过明确共现统计构建词向量的思想不<br>同,NLM旨在将词向量当成待学习的模型参数,并通过神经网络在大规模非结构化文本中训练来更新这些参数以得到最优的词语义编码(常被称作word embedding).</p>
+<p>最早的概率性NLM由Bengio等人提出^[6]^,其模型使用前向神经网络(feedforward neural network)根据语境预测下一个词出现的概率.通过对训练文本中每个词的极大似然估计,模型参数(包括词向量和神经网络参数)可使用误差反向传播算法(BP)进行更新.此模型的一个缺点在于仅仅使用了有限的语境.后来,Mikolov等人^[7]^提出使用递归神经网络(recurrent neural network) 来代替前向神经网络，从而模拟较长的语境.此外,原始NLM的计算复杂度很高,这主要是由于网络中大量参数和非线性转换所致.针对这一问题,Mikolov等人^[8]^提出2种简化(去掉神经网络权重和非线性转换)的NLM,即continuous bag of words(CBOW)和Skip-gram.前者通过窗口语境预测目标词出现的概率,而后者使<br>用目标词预测窗口中的每个语境词出现的概率.</p>
+<p>总而言之,NLM同HAL相似，所得到的词向量并不能直接用于短文本理解,而需要额外的合成模型依据词向量得到短文本向量.</p>
+<ul>
+<li>段向量</li>
+</ul>
+<p>段向量(paragraph vector, PV)^[10]^是另一种基于神经网络的隐性短文本理解模型. PV可被视作文献^[8]^中CBOW和Skip-gram的延伸，可直接应用于短文本向量的学习.PV的核心思想是将短文本向量当作“语境”,用于辅助推理(例如根据当前词预测语境词).在极大似然的估计过程中，文本向量亦被作为模型参数更新. PV的产出是词向量和文本向量.对于(线上任务中的)测试短文本，PV需要使用额外的推理获取其向量.图3比较了CBOW、Skip-gram和2种PV的异同.</p>
+<p><img src="/home/zhishuang/Pictures/QQ%E5%9B%BE%E7%89%8720200630104534.png" alt="QQ图片20200630104534"></p>
+<h4 id="半显性-semi-xpIicit-语义模型"><a href="#半显性-semi-xpIicit-语义模型" class="headerlink" title="半显性(semi-xpIicit)语义模型"></a>半显性(semi-xpIicit)语义模型</h4><p>半显性语义模型产生的短文本表示方法,也是一种映射在语义空间里的向量.与隐性语义模型不同的是,半显性语义模型的向量的每一个维度是一个“主题(topic)”.这个主题通常是一组词的聚类.人们可以通过这个主题猜测这个维度所代表的含义;但是这个维度的语义仍然不是明确的、可解释的.半显性语义模型的代表性工作是主题模型(topic<br>models).</p>
+<p>LSA尝试通过线性代数(奇异值分解)的处理方式发现文本中的隐藏语义结构,从而得到词和文本的特征表示;而主题模型则尝试从概率生成模型(generative model)的角度分析文本语义结构,模拟“主题”这一隐藏参数,从而解释词与文本的共现关系.最早的主题模型PLSA( probabilistic LSA)为LSA的延伸，由Hofmann提出^[11]^PLSA假设文本具有主题分布,而文本中的词从主题对应的词分布中抽取.以d表示文本,w表示词,z表示主题(隐藏<br>参数),文本和词的联系概率$p(d,w)$的生成过程可被表示为:</p>
+<p>$p(d, w)=p(d) \sum_{x \in Z} p(w \mid z) p(z \mid d)$</p>
+<p>虽然PLSA可以模拟每个文本的主题分布,然而其没有假设主题的先验分布(每个训练文本的主题分布相对独立),它的参数随训练文本的个数呈线性增长，且无法应用于测试文本.一个更加完善的    主题模型为LDA ( latent dirichlet allocation)^[12]^. LDA从贝叶斯的角度为2个多项式分布添加了狄利克雷先验分布,从而解决了PLSA 中存在的问题.在LDA中,每个文本的主题分布为多项式分布$Mult (θ)$,其中$θ$从狄利克雷先验$Dir(α)$抽取.同理,对于主题的词分布$Mult(φ)$,其参数$φ$从狄利克雷先验$Dir(β)$获取.图4对比了PLSA和LDA的盘子表示法(plate notation).</p>
+<p><img src="/home/zhishuang/Pictures/QQ%E5%9B%BE%E7%89%8720200630104534.png" alt="QQ图片20200630104534"></p>
+<p>总之,通过采用主题模型对短文本进行训练,最终可以获取每个短文本的主题分布，以作为其表示方式.这种表示方法将短文本转为了机器可以用于计算的向量.</p>
+<h4 id="显性-explicit-语义模型"><a href="#显性-explicit-语义模型" class="headerlink" title="显性(explicit)语义模型"></a>显性(explicit)语义模型</h4><p>近年来，随着大规模知识库系统的出现(如Wikipedia ,Freebase,Probase等),越来越多的研究关注于如何将短文本转化成人和机器都可以理解的表示方法.这类模型称之为显性语义模型.与前2类模型相比,显性语义模型最大的特点就是它所产生的短文本向量表示不仅是可用于机器计算的,也是人类可以理解的,每一个维度都有明确的含义,通常<br>是一个明确的“概念(concept)”.这意味着机器将短文本转为显性语义向量后,人们很容易就可以判断这个向量的质量,发现其中的问题，从而方便进一步的模型调整与优化.</p>
+<p>1)显性语义分析模型.在基于隐性语义的模型中,向量的每个维度并没有明确的含义标注.与之相对的是显性语义模型,向量空间的构建由知识库辅助完成.显性语义分析模型(explicit semantic analysis,ESA)^[13]^同LSA的构建思路一致, 旨在构建一个庞大的词与文本的共现矩阵.在这个矩阵中，每个输入为词与文本的TF-IDF.然而,在ESA中词向量的每<br>个维度代表一个明确的知识库文本,例如Wikipedia文章(或标题).此外,原始的ESA模型没有对共现矩阵进行降维处理，因而产生的词向量具有较高维度.在短文本理解这一任务中,需使用额外的语义合成方法推导出短文本向量.图5比较了LSA,HAL,ESA和LDA在本质上的区别与联系.</p>
+<p>2)概念化,另一类基于显性语义的短文本理解方法为概念(conceptualization).概念化旨在借助知识库推出短文本中每个词的概念分布，即将词按语境映射到一个以概念为维度的向量上。在这一任务中,每个词的候选概念可从知识库中明确获取.例如，通过知识库Probase^[16]^，机器可获悉apple这个词有“水果”和“公司”这2个概念当apple出现在“apple ipad”这个短文本中,通过概念化可分析得出apple有较高的概率属于“公司”这个概念.最早的概念化方法由Song等人提出^[9]^。其模型使用知识库Probase,获取短文本中每个词与概念间的条件概率$p(concept | word)$和$p(word | concept)$,从而通过朴素贝叶斯的方法推出每个短文本的概念分布.这一单纯基于概率的模型无法处理由语义相关但概念不同的词组成的短文本(如“apple ipad”).为解决无法识别语境的问题,Kim等人^[14]^对Song的模型做出了改进.新的模型使用LDA主题模型,分析整条短文本的主题分布,进而<br>计算$p(concept |word ,topic)$.</p>
+<h3 id="文献引用-1"><a href="#文献引用-1" class="headerlink" title="文献引用"></a>文献引用</h3><p>[1] Linmei, H., Yang, T., Shi, C., Ji, H., &amp; Li, X. (2019, November). Heterogeneous graph attention networks for semi-supervised short text classification. In <em>Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)</em> (pp. 4823-4832).</p>
+<p>[2]王仲远, 程健鹏, 王海勋, 等. 短文本理解研究[J]. 计算机研究与发展, 2016, 53(2): 262-269.</p>
+<p>[3]Deerwester S, Dumais S T, Furnas G W, et al. Indexing by latent semantic analysis[J]. Journal of the American society for information science, 1990, 41(6): 391-407.</p>
+<p>[4]Lund K, Burgess C. Producing high-dimensional semantic spaces from lexical co-occurrence[J]. Behavior research methods, instruments, &amp; computers, 1996, 28(2): 203-208.</p>
+<p>[5]Turney P D, Pantel P. From frequency to meaning: Vector space models of semantics[J]. Journal of artificial intelligence research, 2010, 37: 141-188.</p>
+<p>[6]Bengio Y, Ducharme R, Vincent P, et al. A neural probabilistic language model[J]. Journal of machine learning research, 2003, 3(Feb): 1137-1155.</p>
+<p>[7]Mikolov T , Martin Karafiát, Burget L , et al. Recurrent neural network based language model[C]// INTERSPEECH 2010, 11th Annual Conference of the International Speech Communication Association, Makuhari, Chiba, Japan, September 26-30, 2010. DBLP, 2010.</p>
+<p>[8]Mikolov T, Chen K, Corrado G, et al. Efficient estimation of word representations in vector space[J]. arXiv preprint arXiv:1301.3781, 2013.</p>
+<p>[11]Hofmann T. Probabilistic latent semantic indexing[C]//Proceedings of the 22nd annual international ACM SIGIR conference on Research and development in information retrieval. 1999: 50-57.</p>
+<p>[12]Blei D M, Ng A Y, Jordan M I. Latent dirichlet allocation[J]. Journal of machine Learning research, 2003, 3(Jan): 993-1022.e</p>
+<p>[13]Gabrilovich E, Markovitch S. Computing semantic relatedness using wikipedia-based explicit semantic analysis[C]//IJcAI. 2007, 7: 1606-1611.</p>
+<p>[9]Song Y, Wang H, Wang Z, et al. Short text conceptualization using a probabilistic knowledgebase[C]//Twenty-Second International Joint Conference on Artificial Intelligence. 2011.</p>
+<p>[14]Kim D, Wang H, Oh A. Context-dependent conceptualization[C]//Twenty-Third International Joint Conference on Artificial Intelligence. 2013.</p>
+<h3 id="《基于深度学习的短文本分类研究综述-刘琴-袁家政-翁长虹》"><a href="#《基于深度学习的短文本分类研究综述-刘琴-袁家政-翁长虹》" class="headerlink" title="《基于深度学习的短文本分类研究综述-刘琴 袁家政 翁长虹》"></a>《基于深度学习的短文本分类研究综述-刘琴 袁家政 翁长虹》</h3><h4 id="基于机器学习"><a href="#基于机器学习" class="headerlink" title="基于机器学习"></a>基于机器学习</h4><ul>
+<li>支持向量机(Support Vector Machine, SVM)</li>
+<li>朴素贝叶斯分类法</li>
+<li>K-最近邻法</li>
+<li>决策树法(Decision Tree, DT)</li>
+<li>中心向量法 </li>
+</ul>
+<h4 id="基于深度学习"><a href="#基于深度学习" class="headerlink" title="基于深度学习"></a>基于深度学习</h4><ul>
+<li><p>CNN+语义约束（Short text classification improved by learning multi-granularity topics-AAAI2011）</p>
+</li>
+<li><p>CNN+语义聚类（Semantic clustering and convolutional neural network for short text categorization-ACL2015）</p>
+</li>
+<li>CNN+RNN+顺序短文本分类（Sequential short-text classification with recurrent and convolutional neural networks-arxiv2016）</li>
+<li>DBN</li>
+</ul>
+<h3 id="标准划分"><a href="#标准划分" class="headerlink" title="标准划分"></a>标准划分</h3><h4 id="传统短文本分类算法-1"><a href="#传统短文本分类算法-1" class="headerlink" title="传统短文本分类算法"></a>传统短文本分类算法</h4><p>基于传统机器学习的短文本分类方法主要是对文本分类进行预处理、特征提取、然后将处理后的文本向量化，最后通过常见的机器学习分类算法来对训练数据集建模</p>
+<p>传统的短文本分类算法中，文本特征提取出的特征质量对文本分类精度有很大的影响</p>
+<p>伴随着统计学习方法的发展，特别是90年代后互联网在线文本数量增长和机器学习学科的兴起，逐渐形成了一套解决大规模文本分类问题的经典方法，整个文本分类问题就拆分成了特征工程和分类器两部分。</p>
+<ul>
+<li>特征工程</li>
+</ul>
+<p>特征工程在机器学习中往往是最耗时耗力的，但却极其的重要。抽象来讲，机器学习问题是把数据转换成信息再提炼到知识的过程，特征是“数据—&gt;信息”的过程，决定了结果的上限，而分类器是“信息—&gt;知识”的过程，则是去逼近这个上限。然而特征工程不同于分类器模型，不具备很强的通用性，往往需要结合对特征任务的理解。</p>
+<p>文本分类问题所在的自然语言领域自然也有其特有的特征处理逻辑，传统文本分类任务大部分工作也在此处。文本特征工程分为文本预处理、特征提取、文本表示三个部分，目的是把文本转换成计算机可理解的格式，并封装足够用于分类的信息，即很强的特征表达能力。</p>
+<p>（1）文本预处理</p>
+<p>文本预处理过程是在文本中提取关键词表示文本的过程，中文文本处理中主要包括文本分词和去停用词两个阶段。之所以进行分词，是因为很多研究表明特征粒度为词粒度远好于字粒度，其实很好理解，因为大部分分类算法不考虑词序信息，基于字粒度显然损失了过多“n-gram”信息。</p>
+<p>具体到中文分词，不同于英文有天然的空格间隔，需要设计复杂的分词算法。传统算法主要有基于字符串匹配的正向/逆向/双向最大匹配；基于理解的句法和语义分析消歧；基于统计的互信息/CRF方法。近年来随着深度学习的应用，WordEmbedding + Bi-LSTM+CRF方法逐渐成为主流，本文重点在文本分类，就不展开了。而停止词是文本中一些高频的冠词助词代词连词介词等对文本分类无意义的词，通常维护一个停用词表，特征提取过程中删除停用表中出现的词，本质上属于特征选择的一部分。</p>
+<p>（2）文本表示和特征提取</p>
+<p>文本表示：</p>
+<p>文本表示的目的是把文本预处理后的转换成计算机可理解的方式，是决定文本分类质量最重要的部分。传统做法常用词袋模型（BOW, Bag Of Words）或向量空间模型（Vector Space Model），最大的不足是忽略文本上下文关系，每个词之间彼此独立，并且无法表征语义信息。一般来说词库量至少都是百万级别，因此词袋模型有个两个最大的问题：高纬度、高稀疏性。词袋模型是向量空间模型的基础，因此向量空间模型通过特征项选择降低维度，通过特征权重计算增加稠密性。</p>
+<p>特征提取：</p>
+<p>向量空间模型的文本表示方法的特征提取对应特征项的选择和特征权重计算两部分。</p>
+<p>特征选择的基本思路是根据某个评价指标独立的对原始特征项（词项）进行评分排序，从中选择得分最高的一些特征项，过滤掉其余的特征项。常用的评价有文档频率、互信息、信息增益、χ²统计量等。</p>
+<p>信息增益特征提取方法：该方法基于信息熵的原理，通过计算各个特征在不同类别样本中的分布情况，通过统计比较发现具有较高类别区分度的特征。信息增益能较好的描述不同特征对不同类别的区别能力，信息增益值越高则区别能力越强，在特征选择时保留较大IG 值，在分类时就更容易得到正确的分类结果，而且能降低特征的维度。</p>
+<p>卡方检验特征选择方法：该方法主要基于相关性检验原理，通过计算某属性与某一类的相关性，来衡量特征候选项项的重要性，该方法考虑到了反相关的属性。在这里反相关的特征候选项同样存在有用信息，反相关的信息量对分类和聚类算法都有积极作用。</p>
+<p>特征权重主要是经典的TF-IDF及其扩展方法，主要思路是一个词的重要度与在类别内的词频成正比，与所有类别出现的次数成反比。</p>
+<p>（3）特征扩展</p>
+<p>由于短文本的特征少，固需要对文本向量进行特征扩展。当前对于短文本信息分类的研究主要聚焦于短文特征的扩展问题之上。特征扩展方法有基于WordNet、Wik ipedia或其他知识库等的特征扩展方法，然而这些方法来说一些的不足之处，对于短文本数据，尤其是即时数据来说，这些方法并不十分合适，因为这些知识库依靠的更多是人工参与编辑，信息相对滞后，扩展特征不够全面，缺乏全局性与一致性。另外一个更重要的原因是网络信息检索本身就会出现噪声问题。这些都会将错误因素累积，所以必须对检索结果进一步筛选。</p>
+<p>为了解决这些问题，一些研究人员通过重新计算短文本与检索结果的相似度，验证并实现了多种方法，包括语义分析等。短文本计算相似度时有一定得困难，短文本包含的特征太少，若直接使用相同特征作为度量标准的话，很多短文本之间的相似度为零。为了解决这个问题，需要采用一种适合短文本相似度计算的方法，常见的相似度计算方法有：1．基于本体词典的规则化方法；2．基于知识库的规则化方法；3．基于搜索引擎的方法；4．基于统计的方法；5．句子层面语义相似度计算方法。</p>
+<p>（4）基于语义的文本表示</p>
+<p>传统做法在文本表示方面除了向量空间模型，还有基于语义的文本表示方法，比如LDA主题模型、LSI/PLSI概率潜在语义索引等方法，一般认为这些方法得到的文本表示可以认为文档的深层表示，而word embedding文本分布式表示方法则是深度学习方法的重要基础。</p>
+<ul>
+<li>分类器</li>
+</ul>
+<p>分类器基本都是统计分类方法了，基本上大部分机器学习方法都在文本分类领域有所应用，比如朴素贝叶斯分类算法（Naïve Bayes）、KNN、SVM、最大熵和神经网络等。</p>
+<h3 id="深度学习文本分类方法"><a href="#深度学习文本分类方法" class="headerlink" title="深度学习文本分类方法"></a>深度学习文本分类方法</h3><p>传统做法主要问题的文本表示是高纬度高稀疏的，特征表达能力很弱，而且神经网络很不擅长对此类数据的处理；此外需要人工进行特征工程，成本很高。而深度学习最初在之所以图像和语音取得巨大成功，一个很重要的原因是图像和语音原始数据是连续和稠密的，有局部相关性。应用深度学习解决大规模文本分类问题最重要的是解决文本表示，再利用CNN/RNN等网络结构自动获取特征表达能力，去掉繁杂的人工特征工程，端到端的解决问题。</p>
+<p>短文本分类是理解短文本的重要方法之一，适用于广泛的应用，包括情感分析（Wang et al.2014），对话系统（Lee和Dernoncourt 2016）以及用户理解（Hu et al.2009）。与段落或文档相比，短文本更加模糊，因为它们没有足够的上下文信息</p>
+<p>与传统基于机器学习的短文本分类算法不同，基于深度学习的短文本分类算法则是通过例如CNN等深度学习模型来对数据进行训练，无需人工对数据进行特征提取，对文本分类精度影响更多的是数据量以及训练迭代次数。</p>
+<p>一般流程为先使用深度学习的词向量技术，把文本数据转换为连续稠密向量，用来表示文本。再将得到的向量表示作为深度学习模型的特征输入，利用CNN/RNN等深度学习网络及其变体自动提取特征。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://zhishuang.tk" rel="external nofollow noreferrer">zhishuang.rao</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://zhishuang.tk/2020/06/06/duan-wen-ben-fen-lei-jia-gou-shu-li/">https://zhishuang.tk/2020/06/06/duan-wen-ben-fen-lei-jia-gou-shu-li/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://zhishuang.tk" target="_blank">zhishuang.rao</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E7%9F%AD%E6%96%87%E6%9C%AC/">
+                                    <span class="chip bg-color">短文本</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%88%86%E7%B1%BB/">
+                                    <span class="chip bg-color">分类</span>
+                                </a>
+                            
+                                <a href="/tags/NLP/">
+                                    <span class="chip bg-color">NLP</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">写作不易，客官能否打赏一杯奶茶？</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '0e4f7f4cf1fa4f9188ae',
+        clientSecret: '0b002fc9696f492baf3c0f762c0502131bf6696f',
+        repo: 'zhishuangR.github.io',
+        owner: 'zhishuangR',
+        admin: "zhishuangR",
+        id: '2020-06-06T16-55-38',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/06/07/yi-gou-tu-shen-jing-wang-luo/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/zhishuangR/myImg/md/23.jpg" class="responsive-img" alt="异构图神经网络">
+                        
+                        <span class="card-title">异构图神经网络</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            转自https://www.jiqizhixin.com/articles/2019-10-14-5
+什么是异构图？传统同构图（Homogeneous Graph）数据中只存在一种节点和边，因此在构建图神经网络时所有节点共享同样的模型参数并
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-07
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%9B%BE%E7%BD%91%E7%BB%9C/" class="post-category">
+                                    图网络
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%BC%82%E6%9E%84%E5%9B%BE/">
+                        <span class="chip bg-color">异构图</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%9B%BE%E7%BD%91%E7%BB%9C/">
+                        <span class="chip bg-color">图网络</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/05/19/mathjax-gong-shi-xuan-ran-xiu-fu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/zhishuangR/myImg/md/5.jpg" class="responsive-img" alt="mathjax 公式渲染修复">
+                        
+                        <span class="card-title">mathjax 公式渲染修复</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            问题hexo默认使用hexo-renderer-marked引擎去渲染网页，它会把利用Markdown语法写的文本去转换为相应的html标签，使得我们写的MathJax公式被错误渲染，没法正确显示出来。
+解决npm uninstall he
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/hexo/" class="post-category">
+                                    hexo
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/mathjax%E6%B8%B2%E6%9F%93/">
+                        <span class="chip bg-color">mathjax渲染</span>
+                    </a>
+                    
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: zhishuang<br />'
+            + '文章作者: zhishuang.rao<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="https://zhishuang.tk" target="_blank">zhishuang.rao</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/zhishuangR" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:zhishuang.rao@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1032979481" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1032979481" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?ba085af90146944d56d67302d72f90bb";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["DaoVoiceObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            a.charset = "utf-8";
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+            "//widget.daovoice.io/widget/6984b559.js", "daovoice")
+        daovoice('init', {
+            app_id: "4bde3e35"
+        });
+        daovoice('update');
+    </script>
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/gh/zhishuangR/zhishuangR.github.io/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
